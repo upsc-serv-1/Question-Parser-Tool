@@ -1,0 +1,9 @@
+backend/.env
+frontend/.env
+backend/__pycache__/
+backend/data/uploads/
+frontend/node_modules/
+frontend/.expo/
+frontend/.metro-cache/
+frontend/dist/
+**/*.pyc
