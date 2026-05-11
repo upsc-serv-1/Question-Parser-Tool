@@ -43,9 +43,8 @@ RULES:
 9. [Microtopic] MUST be exactly one of the entries in the taxonomy below. If unsure, pick the closest and lower [Confidence] accordingly.
 10. [InconsistencyFlag] ∈ {none, qp_sol_topic_mismatch, option_not_found_in_qp, q_number_suspected_swap, incomplete_question, incomplete_explanation}
 11. [Confidence] ∈ 0–100 integer. Lower if any flag set, OCR garble visible, or you had to guess heavily.
-12. [PYQSource] / [PYQYear] empty if not detected. Sources e.g., UPSC, BPSC, UPPCS.
-
-Do NOT add any commentary outside the blocks. Do NOT use code-fences. Do NOT translate.
+12. [PYQSource] / [PYQYear] empty if not detected. Sources e.g., UPSC, BPSC, UPPCS. NOTE: Some unified PDFs (like Prisma Books) list questions and answers together in one block. If the `--- RAW QUESTION N ---` text already includes the Answer and Explanation, extract them fully into the JSON block even if the separate `--- RAW SOLUTION ---` section is absent.
+13. Do NOT add any commentary outside the blocks. Do NOT use code-fences. Do NOT translate.
 """
 
 FORMAT_EXAMPLE = """=== QUESTION 1 ===
