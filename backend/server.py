@@ -165,6 +165,11 @@ class QuestionUpdate(BaseModel):
     inconsistency_reason: Optional[str] = None
 
 
+class BulkQuestionUpdate(BaseModel):
+    question_numbers: List[int]
+    updates: Dict[str, Any]
+
+
 class ExportPdfRequest(BaseModel):
     font_family: str = "sans"
     font_size: int = 12
@@ -565,6 +570,50 @@ async def update_question(job_id: str, q_num: int, body: QuestionUpdate):
     return q
 
 
+@api.get("/jobs/{job_id}/questions/{q_num}/history")
+async def get_revision_history(job_id: str, q_num: int):
+    revisions = await db.jt_revisions.find(
+        {"job_id": job_id, "question_number": q_num}, {"_id": 0}
+    ).sort("created_at", -1).to_list(length=100)
+    return {"revisions": revisions}
+
+
+@api.post("/jobs/{job_id}/questions/{q_num}/restore/{rev_id}")
+async def restore_revision(job_id: str, q_num: int, rev_id: str):
+    rev = await db.jt_revisions.find_one({"id": rev_id}, {"_id": 0})
+    if not rev:
+        raise HTTPException(404, "Revision not found")
+    
+    # Overwrite standard entry with the snapshot block contents
+    snapshot = rev["snapshot"]
+    snapshot.pop("_id", None) # Sanitization
+    snapshot["updated_at"] = now_iso()
+    snapshot["edited"] = True
+    
+    await db.jt_questions.update_one(
+        {"job_id": job_id, "question_number": q_num},
+        {"$set": snapshot}
+    )
+    return {"ok": True}
+
+
+@api.patch("/jobs/{job_id}/bulk-questions")
+async def bulk_update_questions(job_id: str, body: BulkQuestionUpdate):
+    await _get_job(job_id)
+    if not body.question_numbers:
+        return {"updated": 0}
+    
+    patch = {k: v for k, v in body.updates.items() if v is not None}
+    patch["updated_at"] = now_iso()
+    patch["edited"] = True
+    
+    r = await db.jt_questions.update_many(
+        {"job_id": job_id, "question_number": {"$in": body.question_numbers}},
+        {"$set": patch}
+    )
+    return {"updated": r.modified_count}
+
+
 @api.get("/jobs/{job_id}/questions")
 async def list_questions(job_id: str, confidence_lt: Optional[int] = None):
     await _get_job(job_id)
@@ -586,6 +635,25 @@ async def page_image(job_id: str, page_num: int, source: str = "qp"):
     except IndexError as e:
         raise HTTPException(404, str(e))
     return Response(content=png, media_type="image/png")
+
+
+@api.get("/jobs/{job_id}/page-map")
+async def get_page_map(job_id: str):
+    """Return a dict mapping Question Number -> Page Index."""
+    job = await _get_job(job_id)
+    from services.pdf_extract import extract_pages
+    qp_pages = extract_pages(job["qp_pdf_path"])
+    mapping = {}
+    from services.q_splitter import Q_HEADING_RE
+    for page_idx, text in enumerate(qp_pages):
+        for m in Q_HEADING_RE.finditer(text):
+            try:
+                n = int(m.group(1))
+                if n not in mapping:
+                    mapping[n] = page_idx
+            except:
+                pass
+    return mapping
 
 
 @api.get("/jobs/{job_id}/export")

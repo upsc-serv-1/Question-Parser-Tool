@@ -9,12 +9,13 @@ import {
   ActivityIndicator,
   Linking,
   Platform,
+  Image,
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { sharedStyles as S, T } from "../../src/theme";
 import { api } from "../../src/api";
 
-type Tab = "preview" | "prompts" | "review" | "export";
+type Tab = "preview" | "prompts" | "review" | "low_confidence" | "export";
 
 export default function JobDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -79,7 +80,7 @@ export default function JobDetail() {
         </Text>
 
         <View style={styles.tabs}>
-          {(["preview", "prompts", "review", "export"] as Tab[]).map((t) => (
+          {(["preview", "prompts", "review", "low_confidence", "export"] as Tab[]).map((t) => (
             <Pressable
               key={t}
               testID={`tab-${t}`}
@@ -87,7 +88,10 @@ export default function JobDetail() {
               style={[styles.tab, tab === t && styles.tabActive]}
             >
               <Text style={[styles.tabText, tab === t && styles.tabTextActive]}>
-                {t === "preview" ? "1 · Preview" : t === "prompts" ? "2 · Prompts" : t === "review" ? "3 · Review" : "4 · Export"}
+                {t === "preview" ? "1 · Preview" :
+                 t === "prompts" ? "2 · Prompts" : 
+                 t === "review" ? "3 · Review" : 
+                 t === "low_confidence" ? "⚠️ Low Conf" : "4 · Export"}
               </Text>
             </Pressable>
           ))}
@@ -96,6 +100,7 @@ export default function JobDetail() {
         {tab === "preview" && <PreviewTab jobId={id!} job={job} onAfter={refresh} />}
         {tab === "prompts" && <PromptsTab jobId={id!} batches={batches} onAfter={refresh} />}
         {tab === "review" && <ReviewTab jobId={id!} questions={questions} onAfter={refresh} />}
+        {tab === "low_confidence" && <LowConfidenceTab jobId={id!} questions={questions} onAfter={refresh} />}
         {tab === "export" && <ExportTab jobId={id!} job={job} questions={questions} />}
       </View>
     </ScrollView>
@@ -111,6 +116,15 @@ function PreviewTab({ jobId, job, onAfter }: any) {
   const [extra, setExtra] = useState("");
   const [genRunning, setGenRunning] = useState(false);
   const [genResult, setGenResult] = useState<any>(null);
+  const [allSubjects, setAllSubjects] = useState<string[]>([]);
+  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
+
+  useEffect(() => {
+    api.taxonomy().then((r) => {
+      const unique = Array.from(new Set((r.entries || []).map(e => e.subject))).filter(Boolean).sort();
+      setAllSubjects(unique);
+    }).catch(console.error);
+  }, []);
 
   const runPreview = async () => {
     setRunning(true);
@@ -132,7 +146,7 @@ function PreviewTab({ jobId, job, onAfter }: any) {
     try {
       const r = await api.generatePrompts(jobId, {
         batch_size: parseInt(batchSize, 10) || 35,
-        subject_filter: [],
+        subject_filter: selectedSubjects,
         extra_instructions: extra,
       });
       setGenResult(r);
@@ -213,7 +227,36 @@ function PreviewTab({ jobId, job, onAfter }: any) {
               />
             </View>
           </View>
-          <View style={{ marginTop: 14 }}>
+
+          <View style={{ marginTop: 12 }}>
+            <Text style={[S.label, { marginBottom: 8 }]}>Subject Scope Filter (Optional)</Text>
+            <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
+              {allSubjects.map(sub => {
+                const isSel = selectedSubjects.includes(sub);
+                return (
+                  <Pressable
+                    key={sub}
+                    onPress={() => {
+                      setSelectedSubjects(prev => 
+                        prev.includes(sub) ? prev.filter(p => p !== sub) : [...prev, sub]
+                      );
+                    }}
+                    style={[
+                      { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, borderWidth: 1, borderColor: T.border },
+                      isSel && { backgroundColor: T.primary, borderColor: T.primary }
+                    ]}
+                  >
+                    <Text style={[S.pSm, { fontSize: 12 }, isSel && { color: "#fff", fontWeight: "600" }]}>{sub}</Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+            <Text style={[S.pSm, { fontSize: 11, color: T.textDim, marginTop: 4 }]}>
+              Leave empty to extract all detected subjects.
+            </Text>
+          </View>
+
+          <View style={{ marginTop: 16 }}>
             <Pressable testID="generate-prompts-btn" style={[S.button, genRunning && { opacity: 0.6 }]} onPress={generate} disabled={genRunning}>
               {genRunning ? <ActivityIndicator color="#fff" size="small" /> : null}
               <Text style={S.buttonText}>{genRunning ? "Building..." : "Build Prompts"}</Text>
@@ -381,10 +424,24 @@ function ReviewTab({ jobId, questions, onAfter }: any) {
   const selected = useMemo(() => questions.find((q: any) => q.question_number === selectedNum), [questions, selectedNum]);
   const [draft, setDraft] = useState<any | null>(null);
   const [saving, setSaving] = useState(false);
+  const [pageMap, setPageMap] = useState<Record<string, number>>({});
+  const [showHist, setShowHist] = useState(false);
+  const [history, setHistory] = useState<any[]>([]);
+  const [histLoading, setHistLoading] = useState(false);
+  const [checked, setChecked] = useState<number[]>([]);
+  const [bulkRunning, setBulkRunning] = useState(false);
+  const [bulkUp, setBulkUp] = useState({ subject: "", section_group: "", microtopic: "" });
+
+  useEffect(() => {
+    api.getPageMap(jobId).then(setPageMap).catch(console.error);
+  }, [jobId]);
 
   useEffect(() => {
     setDraft(selected ? { ...selected } : null);
+    setShowHist(false);
   }, [selected?.question_number]);
+
+  const activePageIdx = selectedNum !== null ? pageMap[selectedNum.toString()] : null;
 
   const save = async () => {
     if (!draft) return;
@@ -408,6 +465,55 @@ function ReviewTab({ jobId, questions, onAfter }: any) {
     }
   };
 
+  const loadHistory = async () => {
+    setShowHist(true);
+    setHistLoading(true);
+    try {
+      const r = await api.getHistory(jobId, selectedNum!);
+      setHistory(r.revisions || []);
+    } catch (e: any) {
+      alert("Failed: " + e.message);
+    } finally {
+      setHistLoading(false);
+    }
+  };
+
+  const restoreRev = async (rid: string) => {
+    if (!confirm("Restore question to this previous snapshot? Current unsaved edits will be lost.")) return;
+    try {
+      await api.restoreRevision(jobId, selectedNum!, rid);
+      setShowHist(false);
+      onAfter();
+    } catch (e: any) {
+      alert(e.message);
+    }
+  };
+
+  const runBulk = async () => {
+    if (checked.length === 0) return;
+    const updates: any = {};
+    if (bulkUp.subject) updates.subject = bulkUp.subject;
+    if (bulkUp.section_group) updates.section_group = bulkUp.section_group;
+    if (bulkUp.microtopic) updates.microtopic = bulkUp.microtopic;
+
+    if (Object.keys(updates).length === 0) {
+      alert("Enter at least one field to update!");
+      return;
+    }
+    
+    setBulkRunning(true);
+    try {
+      const r = await api.bulkUpdateQuestions(jobId, checked, updates);
+      alert(`Updated ${r.updated} questions successfully.`);
+      setChecked([]);
+      onAfter();
+    } catch (e: any) {
+      alert(e.message);
+    } finally {
+      setBulkRunning(false);
+    }
+  };
+
   if (questions.length === 0) {
     return (
       <View style={[S.card, { alignItems: "center", padding: 40 }]}>
@@ -418,33 +524,94 @@ function ReviewTab({ jobId, questions, onAfter }: any) {
   }
 
   return (
-    <View style={[S.row, { alignItems: "flex-start", gap: 16 }]}>
-      <View style={[S.card, { width: 240, maxHeight: 720 }]}>
-        <Text style={S.h3}>Questions ({questions.length})</Text>
+    <View style={[S.row, { alignItems: "flex-start", gap: 16, height: 720 }]}>
+      {/* 1. Sidebar */}
+      <View style={[S.card, { width: 260, height: "100%" }]}>
+        <View style={[S.row, { justifyContent: "space-between" }]}>
+          <Text style={S.h3}>Questions ({questions.length})</Text>
+          {checked.length > 0 && (
+            <Pressable onPress={() => setChecked([])}><Text style={[S.pSm, { color: T.primary }]}>Clear</Text></Pressable>
+          )}
+        </View>
         <View style={[S.divider, { marginTop: 8 }]} />
-        <ScrollView style={{ maxHeight: 640 }}>
+        <ScrollView style={{ flex: 1 }}>
           {questions.map((q: any) => {
             const c = q.confidence || 0;
             const dot = c >= 80 ? T.ok : c >= 60 ? T.warn : T.err;
             const flagged = q.inconsistency_flag && q.inconsistency_flag !== "none";
+            const isChecked = checked.includes(q.question_number);
             return (
-              <Pressable
-                key={q.question_number}
-                testID={`q-row-${q.question_number}`}
-                onPress={() => setSelectedNum(q.question_number)}
-                style={[styles.qRow, selectedNum === q.question_number && { backgroundColor: T.surfaceAlt, borderColor: T.primary }]}
-              >
-                <View style={[styles.dot, { backgroundColor: flagged ? T.err : dot }]} />
-                <Text style={[S.p, { flex: 1 }]} numberOfLines={1}>Q{q.question_number} · {q.subject || "—"}</Text>
-                <Text style={[S.pSm, { color: dot }]}>{c}</Text>
-              </Pressable>
+              <View key={q.question_number} style={[S.row, { gap: 4 }]}>
+                <Pressable
+                  onPress={() => setChecked(prev => isChecked ? prev.filter(c => c !== q.question_number) : [...prev, q.question_number])}
+                  style={{ padding: 4 }}
+                >
+                  <View style={{ width: 16, height: 16, borderWidth: 1, borderColor: T.border, borderRadius: 3, backgroundColor: isChecked ? T.primary : "transparent", alignItems: "center", justifyContent: "center" }}>
+                    {isChecked && <Text style={{ color: "#fff", fontSize: 10, fontWeight: "bold" }}>✓</Text>}
+                  </View>
+                </Pressable>
+                <Pressable
+                  testID={`q-row-${q.question_number}`}
+                  onPress={() => setSelectedNum(q.question_number)}
+                  style={[styles.qRow, { flex: 1 }, selectedNum === q.question_number && { backgroundColor: T.surfaceAlt, borderColor: T.primary }]}
+                >
+                  <View style={[styles.dot, { backgroundColor: flagged ? T.err : dot }]} />
+                  <Text style={[S.p, { flex: 1, fontSize: 13 }]} numberOfLines={1}>Q{q.question_number} · {q.subject || "—"}</Text>
+                </Pressable>
+              </View>
             );
           })}
         </ScrollView>
       </View>
 
-      <View style={[S.card, { flex: 1 }]}>
-        {!draft ? <Text style={S.pSm}>Select a question.</Text> : (
+      {/* 2. PDF Preview Panel */}
+      <View style={[S.card, { flex: 1.2, height: "100%", overflow: "hidden", padding: 0 }]}>
+        <View style={{ padding: 12, borderBottomWidth: 1, borderBottomColor: T.border }}>
+          <Text style={S.h3}>PDF Context</Text>
+          <Text style={[S.pSm, { fontSize: 11 }]}>
+            {activePageIdx !== null && activePageIdx !== undefined ? `Showing Page ${activePageIdx + 1}` : "Locating page..."}
+          </Text>
+        </View>
+        <ScrollView contentContainerStyle={{ padding: 8 }}>
+          {activePageIdx !== null && activePageIdx !== undefined ? (
+            <Image
+              source={{ uri: api.pageImageUrl(jobId, activePageIdx) }}
+              style={{ width: "100%", height: 800, resizeMode: "contain" }}
+            />
+          ) : (
+            <View style={{ padding: 20, alignItems: "center" }}>
+              <Text style={S.pSm}>No associated page mapping found.</Text>
+            </View>
+          )}
+        </ScrollView>
+      </View>
+
+      {/* 3. Edit Panel */}
+      <View style={[S.card, { flex: 1, height: "100%" }]}>
+        {checked.length > 0 ? (
+          <View style={{ gap: 12 }}>
+            <View style={[S.row, { justifyContent: "space-between" }]}>
+              <Text style={S.h2}>Bulk Edit ({checked.length} items)</Text>
+              <Pressable onPress={() => setChecked([])}><Text style={{ color: T.accent }}>Cancel</Text></Pressable>
+            </View>
+            <Text style={S.pSm}>Specify fields to apply to all {checked.length} selected items. Leave fields blank to keep existing values.</Text>
+            <View style={[S.divider, { marginVertical: 8 }]} />
+            <Field label="New Subject">
+              <TextInput value={bulkUp.subject} onChangeText={(v) => setBulkUp({ ...bulkUp, subject: v })} style={S.input} placeholder="Enter new subject..." />
+            </Field>
+            <Field label="New Section Group">
+              <TextInput value={bulkUp.section_group} onChangeText={(v) => setBulkUp({ ...bulkUp, section_group: v })} style={S.input} />
+            </Field>
+            <Field label="New Microtopic">
+              <TextInput value={bulkUp.microtopic} onChangeText={(v) => setBulkUp({ ...bulkUp, microtopic: v })} style={S.input} />
+            </Field>
+            <View style={[S.divider, { marginVertical: 12 }]} />
+            <Pressable style={[S.button, { alignSelf: "flex-end" }, bulkRunning && { opacity: 0.6 }]} onPress={runBulk} disabled={bulkRunning}>
+              {bulkRunning && <ActivityIndicator color="#fff" size="small" />}
+              <Text style={S.buttonText}>{bulkRunning ? "Applying..." : "Apply to Selection"}</Text>
+            </Pressable>
+          </View>
+        ) : !draft ? <Text style={S.pSm}>Select a question.</Text> : (
           <View style={{ gap: 12 }}>
             <View style={S.row}>
               <Text style={S.h2}>Q{draft.question_number}</Text>
@@ -514,7 +681,33 @@ function ReviewTab({ jobId, questions, onAfter }: any) {
               <Pressable testID="save-question-btn" style={[S.button, saving && { opacity: 0.6 }]} onPress={save} disabled={saving}>
                 <Text style={S.buttonText}>{saving ? "Saving..." : "Save Question"}</Text>
               </Pressable>
+              <Pressable style={[S.buttonGhost, showHist && { borderColor: T.primary }]} onPress={showHist ? () => setShowHist(false) : loadHistory}>
+                <Text style={S.buttonGhostText}>🕘 {showHist ? "Hide History" : "History"}</Text>
+              </Pressable>
             </View>
+
+            {showHist && (
+              <View style={[S.cardAlt, { marginTop: 8, maxHeight: 280 }]}>
+                <Text style={S.label}>Edit History (Newest first)</Text>
+                <View style={[S.divider, { marginVertical: 6 }]} />
+                {histLoading ? <ActivityIndicator color={T.primary} /> : (
+                  <ScrollView nestedScrollEnabled>
+                    {history.length === 0 ? <Text style={S.pSm}>No history revisions found.</Text> : null}
+                    {history.map((rev) => (
+                      <View key={rev.id} style={{ paddingVertical: 8, borderBottomWidth: 1, borderBottomColor: T.border, flexDirection: "row", alignItems: "center" }}>
+                        <View style={{ flex: 1 }}>
+                          <Text style={[S.pSm, { fontWeight: "bold" }]}>{new Date(rev.created_at).toLocaleString()}</Text>
+                          <Text style={[S.pSm, { fontSize: 11, color: T.textDim }]}>Source: {rev.source}</Text>
+                        </View>
+                        <Pressable style={[S.buttonGhost, { paddingVertical: 4, paddingHorizontal: 8 }]} onPress={() => restoreRev(rev.id)}>
+                          <Text style={[S.buttonGhostText, { fontSize: 12 }]}>Restore</Text>
+                        </Pressable>
+                      </View>
+                    ))}
+                  </ScrollView>
+                )}
+              </View>
+            )}
           </View>
         )}
       </View>
@@ -524,7 +717,7 @@ function ReviewTab({ jobId, questions, onAfter }: any) {
 
 function Field({ label, w, children }: any) {
   return (
-    <View style={{ minWidth: typeof w === "number" ? w : undefined, flex: typeof w === "number" ? 0 : 1, width: typeof w === "string" ? w : undefined }}>
+    <View style={{ minWidth: typeof w === "number" ? w : undefined, flex: typeof w === "number" ? 0 : 1, width: typeof w === "string" ? w : undefined } as any}>
       <Text style={[S.label, { marginBottom: 6 }]}>{label}</Text>
       {children}
     </View>
@@ -771,3 +964,112 @@ const styles = StyleSheet.create({
     lineHeight: 18,
   },
 });
+
+function LowConfidenceTab({ jobId, questions, onAfter }: any) {
+  const lowConf = questions.filter((q: any) => (q.confidence || 0) < 80);
+  const [prompt, setPrompt] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [pasteback, setPasteback] = useState("");
+  const [parsing, setParsing] = useState(false);
+
+  const generateReverify = async () => {
+    setLoading(true);
+    try {
+      const r = await api.reverifyPrompt(jobId, 80);
+      setPrompt(r.prompt_text || r.prompt || "");
+    } catch (e: any) {
+      alert("Failed: " + e.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const submitFixes = async () => {
+    if (!pasteback.trim()) return;
+    setParsing(true);
+    try {
+      await api.parseOutput(jobId, { output_text: pasteback });
+      alert("Successfully integrated corrections!");
+      setPasteback("");
+      onAfter();
+    } catch (e: any) {
+      alert(e.message);
+    } finally {
+      setParsing(false);
+    }
+  };
+
+  return (
+    <View style={{ gap: 16 }}>
+      <View style={S.card}>
+        <View style={[S.row, { justifyContent: "space-between" }]}>
+          <View>
+            <Text style={S.h2}>Low Confidence Queue ({"<"}80)</Text>
+            <Text style={[S.pSm, { marginTop: 4 }]}>{lowConf.length} questions need manual verification or prompt re-run.</Text>
+          </View>
+          <Pressable style={S.button} onPress={generateReverify} disabled={loading || lowConf.length === 0}>
+            <Text style={S.buttonText}>{loading ? "Generating..." : "Build Re-verify Prompt"}</Text>
+          </Pressable>
+        </View>
+      </View>
+
+      <View style={[S.row, { alignItems: "flex-start", gap: 16 }]}>
+        <View style={[S.card, { flex: 1, maxHeight: 600 }]}>
+          <Text style={S.h3}>Suspect List</Text>
+          <View style={[S.divider, { marginVertical: 8 }]} />
+          <ScrollView style={{ flex: 1 }}>
+            {lowConf.map((q: any) => (
+              <View key={q.question_number} style={[styles.qRow, { backgroundColor: T.bg, marginBottom: 4 }]}>
+                <View style={[styles.dot, { backgroundColor: T.err }]} />
+                <Text style={[S.p, { flex: 1 }]}>Q{q.question_number} · {q.subject || "Untitled"}</Text>
+                <Text style={[S.p, { fontWeight: "bold", color: T.err }]}>{q.confidence || 0}%</Text>
+              </View>
+            ))}
+            {lowConf.length === 0 && <Text style={S.pSm}>No low-confidence items found! 🎉</Text>}
+          </ScrollView>
+        </View>
+
+        <View style={[S.card, { flex: 2, minHeight: 400 }]}>
+          <Text style={S.h3}>Re-verify Prompt & Corrections</Text>
+          <View style={[S.divider, { marginVertical: 8 }]} />
+          {prompt ? (
+            <>
+              <Text style={[S.label, { marginBottom: 4 }]}>Step 1: Copy Prompt for Gemini</Text>
+              <TextInput
+                value={prompt}
+                editable={false}
+                multiline
+                style={[S.input, styles.code, { minHeight: 120, backgroundColor: T.surfaceAlt, fontSize: 11 }]}
+              />
+              <Pressable style={[S.buttonGhost, { alignSelf: "flex-end", marginTop: 6 }]} onPress={() => {
+                if (Platform.OS === "web") navigator.clipboard.writeText(prompt);
+                alert("Copied!");
+              }}>
+                <Text style={S.buttonGhostText}>📋 Copy Prompt</Text>
+              </Pressable>
+
+              <View style={[S.divider, { marginVertical: 16 }]} />
+
+              <Text style={[S.label, { marginBottom: 4 }]}>Step 2: Paste Fixed Output Here</Text>
+              <TextInput
+                multiline
+                value={pasteback}
+                onChangeText={setPasteback}
+                placeholder="Paste the JSON corrections block back..."
+                style={[S.input, { minHeight: 160 }]}
+              />
+              <Pressable style={[S.button, { marginTop: 12, alignSelf: "flex-end" }]} onPress={submitFixes} disabled={parsing}>
+                {parsing && <ActivityIndicator color="#fff" size="small" />}
+                <Text style={S.buttonText}>{parsing ? "Parsing..." : "Inject Corrections"}</Text>
+              </Pressable>
+            </>
+          ) : (
+            <View style={{ alignItems: "center", padding: 40 }}>
+              <Text style={S.pSm}>Generate prompt to start re-verifying.</Text>
+            </View>
+          )}
+        </View>
+      </View>
+    </View>
+  );
+}

@@ -33,12 +33,18 @@ export const api = {
     jsonFetch<any>(`/api/jobs/${id}/parse-output`, { method: "POST", body: JSON.stringify(body) }),
   updateQuestion: (id: string, qNum: number, body: any) =>
     jsonFetch<any>(`/api/jobs/${id}/questions/${qNum}`, { method: "PATCH", body: JSON.stringify(body) }),
+  bulkUpdateQuestions: (id: string, qNums: number[], updates: any) =>
+    jsonFetch<any>(`/api/jobs/${id}/bulk-questions`, { method: "PATCH", body: JSON.stringify({ question_numbers: qNums, updates }) }),
+  getHistory: (id: string, qNum: number) => jsonFetch<{ revisions: any[] }>(`/api/jobs/${id}/questions/${qNum}/history`),
+  restoreRevision: (id: string, qNum: number, revId: string) =>
+    jsonFetch<any>(`/api/jobs/${id}/questions/${qNum}/restore/${revId}`, { method: "POST" }),
   exportJsonUrl: (id: string) => `${BASE}/api/jobs/${id}/export?format=json`,
   exportMdUrl: (id: string) => `${BASE}/api/jobs/${id}/export?format=md`,
   exportDocxUrl: (id: string) => `${BASE}/api/jobs/${id}/export?format=docx`,
   exportPdf: (id: string, opts: any) => fetch(`${BASE}/api/jobs/${id}/export/pdf`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(opts) }),
   pageImageUrl: (id: string, page: number, source: "qp" | "sol" = "qp") =>
     `${BASE}/api/jobs/${id}/page-image/${page}?source=${source}`,
+  getPageMap: (id: string) => jsonFetch<Record<string, number>>(`/api/jobs/${id}/page-map`),
   reverifyPrompt: (id: string, threshold: number) =>
     jsonFetch<any>(`/api/jobs/${id}/reverify-prompt?threshold=${threshold}`, { method: "POST" }),
 };
