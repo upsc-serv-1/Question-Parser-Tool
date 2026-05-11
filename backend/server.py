@@ -137,6 +137,8 @@ class GeneratePromptsRequest(BaseModel):
     batch_size: int = 35
     subject_filter: List[str] = []
     extra_instructions: str = ""
+    use_ocr: bool = False
+    columns: int = 1
 
 
 class ParseOutputRequest(BaseModel):
@@ -317,10 +319,14 @@ async def delete_job(job_id: str):
 
 
 @api.get("/jobs/{job_id}/preview")
-async def preview_job(job_id: str):
+async def preview_job(job_id: str, use_ocr: bool = False, columns: int = 1):
     """Extract PDFs, split into questions, return bundle + sanity report."""
     job = await _get_job(job_id)
-    qp_pages = extract_pages(job["qp_pdf_path"])
+    try:
+        qp_pages = extract_pages(job["qp_pdf_path"], use_ocr=use_ocr, columns=columns)
+    except RuntimeError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+        
     qp_pages = repeated_line_strip(qp_pages)
     qp_text = clean_lines(full_text(qp_pages))
     qp_blocks = split_questions(qp_text)
@@ -328,7 +334,7 @@ async def preview_job(job_id: str):
     sol_blocks: list = []
     sol_pages: list = []
     if job.get("sol_pdf_path"):
-        sol_pages = extract_pages(job["sol_pdf_path"])
+        sol_pages = extract_pages(job["sol_pdf_path"], use_ocr=use_ocr, columns=columns)
         sol_pages = repeated_line_strip(sol_pages)
         sol_text = clean_lines(full_text(sol_pages))
         sol_blocks = split_questions(sol_text)
@@ -364,13 +370,17 @@ async def preview_job(job_id: str):
 @api.post("/jobs/{job_id}/prompts")
 async def generate_prompts(job_id: str, body: GeneratePromptsRequest):
     job = await _get_job(job_id)
-    qp_pages = extract_pages(job["qp_pdf_path"])
+    try:
+        qp_pages = extract_pages(job["qp_pdf_path"], use_ocr=body.use_ocr, columns=body.columns)
+    except RuntimeError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+        
     qp_pages = repeated_line_strip(qp_pages)
     qp_text = clean_lines(full_text(qp_pages))
     qp_blocks = split_questions(qp_text)
     sol_blocks: list = []
     if job.get("sol_pdf_path"):
-        sp = extract_pages(job["sol_pdf_path"])
+        sp = extract_pages(job["sol_pdf_path"], use_ocr=body.use_ocr, columns=body.columns)
         sp = repeated_line_strip(sp)
         sol_blocks = split_questions(clean_lines(full_text(sp)))
     bundle = bundle_qp_sol(qp_blocks, sol_blocks)
@@ -638,14 +648,16 @@ async def page_image(job_id: str, page_num: int, source: str = "qp"):
 
 
 @api.get("/jobs/{job_id}/page-map")
-async def get_page_map(job_id: str):
+async def get_page_map(job_id: str, columns: int = 1):
     """Return a dict mapping Question Number -> Page Index."""
     job = await _get_job(job_id)
     from services.pdf_extract import extract_pages
-    qp_pages = extract_pages(job["qp_pdf_path"])
+    # No need for OCR in mapping, we only care about simple Text extraction for fast header detection
+    qp_pages = extract_pages(job["qp_pdf_path"], use_ocr=False, columns=columns)
     mapping = {}
     from services.q_splitter import Q_HEADING_RE
-    for page_idx, text in enumerate(qp_pages):
+    for page_idx, pg in enumerate(qp_pages):
+        text = pg.get("text", "")
         for m in Q_HEADING_RE.finditer(text):
             try:
                 n = int(m.group(1))

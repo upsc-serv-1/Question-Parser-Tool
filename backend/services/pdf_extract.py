@@ -6,17 +6,58 @@ from typing import List, Dict
 import re
 
 
-def extract_pages(pdf_path: str) -> List[Dict]:
-    """Return list of {page_num, text, char_count} for each page."""
+def extract_pages(pdf_path: str, use_ocr: bool = False, columns: int = 1) -> List[Dict]:
+    """Return list of {page_num, text, char_count} for each page.
+    
+    If columns > 1, geometrically slices page horizontally and reorders blocks top-down
+    by column to maintain reading order.
+    """
     doc = fitz.open(pdf_path)
     pages = []
+    
+    # Import OCR if needed
+    from .ocr import ocr_page_via_tesseract, is_tesseract_available
+
     for i, page in enumerate(doc):
-        text = page.get_text("text") or ""
+        raw_text = ""
+        
+        if use_ocr:
+            # Forced OCR path
+            raw_text = ocr_page_via_tesseract(page)
+        else:
+            # Intelligent Text Path
+            if columns <= 1:
+                raw_text = page.get_text("text") or ""
+            else:
+                # Slice into logical vertical segments
+                blocks = page.get_text("blocks") # (x0, y0, x1, y1, "text", block_no, type)
+                width = page.rect.width
+                col_width = width / columns
+                
+                # Group blocks into columnar bins
+                buckets = [[] for _ in range(columns)]
+                for b in blocks:
+                    # Find bucket based on center X coord of block
+                    cx = (b[0] + b[2]) / 2
+                    bucket_idx = int(cx // col_width)
+                    bucket_idx = max(0, min(bucket_idx, columns - 1))
+                    buckets[bucket_idx].append(b)
+                
+                # Combine texts bucket by bucket, sorting each by vertical Y ascending
+                page_parts = []
+                for buck in buckets:
+                    buck.sort(key=lambda item: item[1]) # sort by top-Y
+                    col_text = "\n".join(b[4] for b in buck if isinstance(b[4], str))
+                    page_parts.append(col_text)
+                
+                raw_text = "\n".join(page_parts)
+        
         pages.append({
             "page_num": i + 1,
-            "text": text,
-            "char_count": len(text.strip()),
+            "text": raw_text,
+            "char_count": len(raw_text.strip()),
         })
+    
     doc.close()
     return pages
 

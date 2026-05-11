@@ -26,6 +26,8 @@ export default function JobDetail() {
   const [batches, setBatches] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState<string | null>(null);
+  const [columns, setColumns] = useState(1);
+  const [useOcr, setUseOcr] = useState(false);
 
   const refresh = useCallback(async () => {
     if (!id) return;
@@ -97,9 +99,9 @@ export default function JobDetail() {
           ))}
         </View>
 
-        {tab === "preview" && <PreviewTab jobId={id!} job={job} onAfter={refresh} />}
-        {tab === "prompts" && <PromptsTab jobId={id!} batches={batches} onAfter={refresh} />}
-        {tab === "review" && <ReviewTab jobId={id!} questions={questions} onAfter={refresh} />}
+        {tab === "preview" && <PreviewTab jobId={id!} job={job} onAfter={refresh} columns={columns} setColumns={setColumns} useOcr={useOcr} setUseOcr={setUseOcr} />}
+        {tab === "prompts" && <PromptsTab jobId={id!} job={job} batches={batches} onAfter={refresh} columns={columns} useOcr={useOcr} />}
+        {tab === "review" && <ReviewTab jobId={id!} questions={questions} onAfter={refresh} columns={columns} />}
         {tab === "low_confidence" && <LowConfidenceTab jobId={id!} questions={questions} onAfter={refresh} />}
         {tab === "export" && <ExportTab jobId={id!} job={job} questions={questions} />}
       </View>
@@ -108,7 +110,7 @@ export default function JobDetail() {
 }
 
 // ─────────────── PREVIEW TAB ──────────────────
-function PreviewTab({ jobId, job, onAfter }: any) {
+function PreviewTab({ jobId, job, onAfter, columns, setColumns, useOcr, setUseOcr }: any) {
   const [data, setData] = useState<any>(null);
   const [running, setRunning] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -130,7 +132,7 @@ function PreviewTab({ jobId, job, onAfter }: any) {
     setRunning(true);
     setErr(null);
     try {
-      const r = await api.preview(jobId);
+      const r = await api.preview(jobId, useOcr, columns);
       setData(r);
       onAfter();
     } catch (e: any) {
@@ -148,6 +150,8 @@ function PreviewTab({ jobId, job, onAfter }: any) {
         batch_size: parseInt(batchSize, 10) || 35,
         subject_filter: selectedSubjects,
         extra_instructions: extra,
+        use_ocr: useOcr,
+        columns: columns
       });
       setGenResult(r);
       onAfter();
@@ -165,6 +169,34 @@ function PreviewTab({ jobId, job, onAfter }: any) {
         <Text style={[S.pSm, { marginTop: 4, marginBottom: 12 }]}>
           Run extraction on the uploaded PDFs to detect questions and surface any QP↔SOL mismatches.
         </Text>
+
+        <View style={[S.rowGap, { marginBottom: 16, gap: 16 }]}>
+          <View style={{ flex: 1 }}>
+            <Text style={[S.label, { marginBottom: 6 }]}>Layout Mode</Text>
+            <View style={[S.row, { gap: 8 }]}>
+              {[1, 2].map(c => (
+                <Pressable 
+                  key={c} 
+                  onPress={() => setColumns(c)}
+                  style={[S.buttonGhost, { paddingVertical: 6, paddingHorizontal: 12 }, columns === c && { borderColor: T.primary, backgroundColor: T.surfaceAlt }]}
+                >
+                  <Text style={[S.buttonGhostText, columns === c && { color: T.primary }]}>{c} Col{c>1?'s':''}</Text>
+                </Pressable>
+              ))}
+            </View>
+          </View>
+
+          <View style={{ flex: 1 }}>
+             <Text style={[S.label, { marginBottom: 6 }]}>Extraction Layer</Text>
+             <Pressable onPress={() => setUseOcr(!useOcr)} style={[S.row, { gap: 8, paddingVertical: 8 }]}>
+                <View style={{ width: 18, height: 18, borderWidth: 1, borderColor: T.border, borderRadius: 4, backgroundColor: useOcr ? T.primary : "transparent", alignItems: "center", justifyContent: "center" }}>
+                   {useOcr && <Text style={{ color: "#fff", fontSize: 10, fontWeight: "bold" }}>✓</Text>}
+                </View>
+                <Text style={S.p}>Attempt OCR (Scanned PDFs)</Text>
+             </Pressable>
+          </View>
+        </View>
+
         <Pressable testID="run-preview-btn" style={[S.button, running && { opacity: 0.6 }]} onPress={runPreview} disabled={running}>
           {running ? <ActivityIndicator color="#fff" size="small" /> : null}
           <Text style={S.buttonText}>{running ? "Extracting..." : "Run Extraction"}</Text>
@@ -283,7 +315,7 @@ function Stat({ label, value, highlight }: any) {
 }
 
 // ─────────────── PROMPTS TAB ──────────────────
-function PromptsTab({ jobId, batches, onAfter }: any) {
+function PromptsTab({ jobId, job, batches, onAfter, columns, useOcr }: any) {
   const [active, setActive] = useState<number>(0);
   const [text, setText] = useState<string>("");
   const [pasteback, setPasteback] = useState("");
@@ -419,7 +451,7 @@ function PromptsTab({ jobId, batches, onAfter }: any) {
 }
 
 // ─────────────── REVIEW TAB ──────────────────
-function ReviewTab({ jobId, questions, onAfter }: any) {
+function ReviewTab({ jobId, questions, onAfter, columns }: any) {
   const [selectedNum, setSelectedNum] = useState<number | null>(questions[0]?.question_number ?? null);
   const selected = useMemo(() => questions.find((q: any) => q.question_number === selectedNum), [questions, selectedNum]);
   const [draft, setDraft] = useState<any | null>(null);
@@ -433,8 +465,8 @@ function ReviewTab({ jobId, questions, onAfter }: any) {
   const [bulkUp, setBulkUp] = useState({ subject: "", section_group: "", microtopic: "" });
 
   useEffect(() => {
-    api.getPageMap(jobId).then(setPageMap).catch(console.error);
-  }, [jobId]);
+    api.getPageMap(jobId, columns).then(setPageMap).catch(console.error);
+  }, [jobId, columns]);
 
   useEffect(() => {
     setDraft(selected ? { ...selected } : null);

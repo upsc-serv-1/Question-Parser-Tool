@@ -24,8 +24,8 @@ export const api = {
   listJobs: () => jsonFetch<{ items: any[] }>("/api/jobs"),
   getJob: (id: string) => jsonFetch<{ job: any; questions: any[]; batches: any[] }>(`/api/jobs/${id}`),
   deleteJob: (id: string) => jsonFetch(`/api/jobs/${id}`, { method: "DELETE" }),
-  preview: (id: string) => jsonFetch<any>(`/api/jobs/${id}/preview`),
-  generatePrompts: (id: string, body: { batch_size: number; subject_filter: string[]; extra_instructions: string }) =>
+  preview: (id: string, ocr: boolean = false, cols: number = 1) => jsonFetch<any>(`/api/jobs/${id}/preview?use_ocr=${ocr}&columns=${cols}`),
+  generatePrompts: (id: string, body: { batch_size: number; subject_filter: string[]; extra_instructions: string; use_ocr?: boolean; columns?: number }) =>
     jsonFetch<any>(`/api/jobs/${id}/prompts`, { method: "POST", body: JSON.stringify(body) }),
   getPrompt: (id: string, idx: number) => jsonFetch<any>(`/api/jobs/${id}/prompts/${idx}`),
   promptDocxUrl: (id: string, idx: number) => `${BASE}/api/jobs/${id}/prompts/${idx}/docx`,
@@ -44,7 +44,7 @@ export const api = {
   exportPdf: (id: string, opts: any) => fetch(`${BASE}/api/jobs/${id}/export/pdf`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(opts) }),
   pageImageUrl: (id: string, page: number, source: "qp" | "sol" = "qp") =>
     `${BASE}/api/jobs/${id}/page-image/${page}?source=${source}`,
-  getPageMap: (id: string) => jsonFetch<Record<string, number>>(`/api/jobs/${id}/page-map`),
+  getPageMap: (id: string, cols: number = 1) => jsonFetch<Record<string, number>>(`/api/jobs/${id}/page-map?columns=${cols}`),
   reverifyPrompt: (id: string, threshold: number) =>
     jsonFetch<any>(`/api/jobs/${id}/reverify-prompt?threshold=${threshold}`, { method: "POST" }),
 };
