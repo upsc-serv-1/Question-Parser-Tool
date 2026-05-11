@@ -12,6 +12,12 @@ def _compute_pyq_flags(group: str) -> Dict[str, bool]:
     }
 
 
+def _safe_int(v: Any, default: Any = 0) -> Any:
+    if v is None or v == "": return default
+    try: return int(v)
+    except: return default
+
+
 def build_schema2_json(job: Dict, questions: List[Dict]) -> Dict[str, Any]:
     """Build the schema 2.0 JSON given a job document and its questions."""
     md = job.get("metadata") or {}
@@ -58,7 +64,7 @@ def build_schema2_json(job: Dict, questions: List[Dict]) -> Dict[str, Any]:
         }
 
         q_out: Dict[str, Any] = {
-            "id": f"{test_id}-q{n:02d}",
+            "id": f"{test_id}-q{n:03d}",
             "questionNumber": n,
             "subject": q.get("subject") or "",
             "sectionGroup": q.get("section_group") or "",
@@ -82,19 +88,15 @@ def build_schema2_json(job: Dict, questions: List[Dict]) -> Dict[str, Any]:
     final = {
         "id": test_id,
         "title": md.get("title", job.get("title", "")),
-        "launch_year": md.get("launch_year"),
+        "launch_year": _safe_int(md.get("launch_year"), 2026),
         "institute": md.get("institute", ""),
         "program_id": md.get("program_id", ""),
         "program_name": md.get("program_name", ""),
         "series": md.get("series", ""),
         "level": md.get("level", ""),
         "paperType": md.get("paperType", ""),
-        "defaultMinutes": md.get("defaultMinutes"),
+        "defaultMinutes": _safe_int(md.get("defaultMinutes"), 0),
         "sourceMode": md.get("sourceMode", "docx-inline"),
-        "schema_version": md.get("schema_version", "2.0"),
-        "institute_id": md.get("institute_id"),
-        "institute_name": md.get("institute_name"),
-        "exam_frame": exam_frame,
         "questions": out_questions,
     }
     return final

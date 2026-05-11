@@ -612,27 +612,27 @@ function ExportTab({ jobId, job, questions }: any) {
           <Text style={S.h3}>PDF Export Options</Text>
           <View style={[S.divider, { marginTop: 8, marginBottom: 12 }]} />
           
-          <Field label="Theme" w={160}>
-            <View style={[S.row, { flexWrap: "wrap", gap: 6 }]}>
-              {["modern", "classic", "sepia", "historical", "dark"].map((t) => (
-                <Pressable
-                  key={t}
-                  onPress={() => setPdfOpts({ ...pdfOpts, theme: t })}
-                  style={[
-                    { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 6, borderWidth: 1 },
-                    pdfOpts.theme === t
-                      ? { backgroundColor: T.accent, borderColor: T.accent }
-                      : { backgroundColor: T.surface, borderColor: T.border }
-                  ]}
-                >
-                  <Text style={[S.pSm, { color: pdfOpts.theme === t ? T.bg : T.text }]}>{t}</Text>
-                </Pressable>
-              ))}
-            </View>
-          </Field>
+          <View style={[S.rowGap, { marginTop: 16, gap: 24 }]}>
+            <Field label="Theme" w={260}>
+              <View style={[S.row, { flexWrap: "wrap", gap: 6 }]}>
+                {["modern", "classic", "sepia", "historical", "dark"].map((t) => (
+                  <Pressable
+                    key={t}
+                    onPress={() => setPdfOpts({ ...pdfOpts, theme: t })}
+                    style={[
+                      { paddingHorizontal: 10, paddingVertical: 6, borderRadius: 6, borderWidth: 1 },
+                      pdfOpts.theme === t
+                        ? { backgroundColor: T.accent, borderColor: T.accent }
+                        : { backgroundColor: T.surface, borderColor: T.border }
+                    ]}
+                  >
+                    <Text style={[S.pSm, { color: pdfOpts.theme === t ? T.bg : T.text }]}>{t}</Text>
+                  </Pressable>
+                ))}
+              </View>
+            </Field>
 
-          <View style={[S.rowGap, { marginTop: 12 }]}>
-            <Field label="Visual Style" w={150}>
+            <Field label="Visual Style" w={220}>
               <View style={[S.row, { gap: 6 }]}>
                 {["document", "flashcard"].map((v) => (
                   <Pressable
@@ -651,7 +651,7 @@ function ExportTab({ jobId, job, questions }: any) {
               </View>
             </Field>
 
-            <Field label="Content Scope" w={160}>
+            <Field label="Content Scope" w={340}>
               <View style={[S.row, { gap: 6 }]}>
                 {["q_only", "q_options", "q_options_expl"].map((c) => (
                   <Pressable
@@ -669,10 +669,8 @@ function ExportTab({ jobId, job, questions }: any) {
                 ))}
               </View>
             </Field>
-          </View>
 
-          <View style={[S.rowGap, { marginTop: 12 }]}>
-            <Field label="Answers" w={140}>
+            <Field label="Answers" w={180}>
               <View style={[S.row, { gap: 6 }]}>
                 {["inline", "end"].map((a) => (
                   <Pressable
@@ -691,7 +689,7 @@ function ExportTab({ jobId, job, questions }: any) {
               </View>
             </Field>
 
-            <Field label="Font" w={130}>
+            <Field label="Font" w={240}>
               <View style={[S.row, { gap: 6 }]}>
                 {["sans", "serif", "mono"].map((f) => (
                   <Pressable
