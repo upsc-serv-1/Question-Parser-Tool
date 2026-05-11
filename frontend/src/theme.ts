@@ -125,3 +125,4 @@ export const sharedStyles = StyleSheet.create({
   },
   badgeText: { color: "#8893ab", fontSize: 11, fontWeight: "600" },
 });
+export const T = DARK;
