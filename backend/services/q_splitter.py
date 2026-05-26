@@ -72,6 +72,29 @@ def split_questions(text: str) -> List[Dict]:
     return [{"number": n, "text": blocks[n]} for n in sorted(blocks)]
 
 
+def try_parse_as_answer_key_grid(text: str) -> Optional[Dict[int, str]]:
+    """Try to parse a raw page text as an answer key grid (e.g. 1 A, 2 B, 21 C ...).
+    Returns a dict of {question_number: key_letter} if a significant number of matches are found.
+    """
+    # Look for patterns like "21 \n A", "21 \t A", "21 A" or "21 \n a"
+    # Matches a number (1-120) followed by optional spaces/newlines, then a key letter (A, B, C, D)
+    pattern = re.compile(r'\b(\d{1,3})\b\s*[\n\t\r\s\-•]*\b([A-Da-d])\b')
+    matches = pattern.findall(text)
+    
+    if len(matches) < 20: # Heuristic: if less than 20 question-key pairs, it's not a grid table
+        return None
+        
+    grid = {}
+    for num_str, key in matches:
+        num = int(num_str)
+        if 1 <= num <= 200:
+            grid[num] = key.upper()
+            
+    # If we found a solid set of sequential keys, return them
+    if len(grid) >= 15:
+        return grid
+    return None
+
 def bundle_qp_sol(qp_blocks: List[Dict], sol_blocks: List[Dict]) -> Dict:
     """Match QP and SOL blocks by question number.
 
@@ -83,10 +106,38 @@ def bundle_qp_sol(qp_blocks: List[Dict], sol_blocks: List[Dict]) -> Dict:
       }
     """
     qp_map = {b["number"]: b["text"] for b in qp_blocks}
-    sol_map = {b["number"]: b["text"] for b in sol_blocks}
+    
+    # Try parsing sol_blocks text as an answer key grid first
+    sol_map = {}
+    
+    # Concatenate all sol blocks text to see if there's an active grid
+    full_sol_text = "\n".join(b.get("text", "") if isinstance(b, dict) else str(b) for b in sol_blocks)
+    
+    # Check if this is a multi-page/multi-series answer key
+    # We will split by page indicators or look at each block independently
+    parsed_grids = []
+    for b in sol_blocks:
+        block_text = b.get("text", "") if isinstance(b, dict) else str(b)
+        grid = try_parse_as_answer_key_grid(block_text)
+        if grid:
+            # Try to identify Series
+            series_match = re.search(r'\bSeries\b\s*[\-:]?\s*\b([A-D])\b', block_text, re.IGNORECASE)
+            series = series_match.group(1).upper() if series_match else "A"
+            parsed_grids.append((series, grid))
+            
+    if parsed_grids:
+        # Default to Series A (or first parsed series) unless we match something else
+        selected_series, selected_grid = parsed_grids[0]
+        # Match series from filename/metadata if possible, otherwise Series A is standard
+        sol_map = {num: f"CORRECT ANSWER: {key}" for num, key in selected_grid.items()}
+        sol_nums = sorted(sol_map.keys())
+    else:
+        # Fallback to standard descriptive split logic
+        sol_map = {b["number"]: b["text"] for b in sol_blocks}
+        sol_nums = sorted(sol_map.keys())
+
     qp_nums = sorted(qp_map)
-    sol_nums = sorted(sol_map)
-    all_nums = sorted(set(qp_nums) | set(sol_nums))
+    all_nums = sorted(set(qp_nums) | set(sol_map.keys()))
     items = []
     for n in all_nums:
         items.append({

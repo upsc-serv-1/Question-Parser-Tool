@@ -357,8 +357,14 @@ async def preview_job(job_id: str, use_ocr: bool = False, columns: int = 1):
     if job.get("sol_pdf_path"):
         sol_pages = extract_pages(job["sol_pdf_path"], use_ocr=use_ocr, columns=columns)
         sol_pages = repeated_line_strip(sol_pages)
-        sol_text = clean_lines(full_text(sol_pages))
-        sol_blocks = split_questions(sol_text)
+        # Check if this might be a tabular answer key first
+        sol_blocks = sol_pages
+        # If it doesn't look like an answer key grid, fall back to parsing paragraphs
+        from services.q_splitter import try_parse_as_answer_key_grid
+        has_grid = any(try_parse_as_answer_key_grid(p.get("text", "")) for p in sol_pages)
+        if not has_grid:
+            sol_text = clean_lines(full_text(sol_pages))
+            sol_blocks = split_questions(sol_text)
 
     bundle = bundle_qp_sol(qp_blocks, sol_blocks)
     qp_scanned = is_scanned(qp_pages)
@@ -403,7 +409,12 @@ async def generate_prompts(job_id: str, body: GeneratePromptsRequest):
     if job.get("sol_pdf_path"):
         sp = extract_pages(job["sol_pdf_path"], use_ocr=body.use_ocr, columns=body.columns)
         sp = repeated_line_strip(sp)
-        sol_blocks = split_questions(clean_lines(full_text(sp)))
+        # Check if this might be a tabular answer key first
+        sol_blocks = sp
+        from services.q_splitter import try_parse_as_answer_key_grid
+        has_grid = any(try_parse_as_answer_key_grid(p.get("text", "")) for p in sp)
+        if not has_grid:
+            sol_blocks = split_questions(clean_lines(full_text(sp)))
     bundle = bundle_qp_sol(qp_blocks, sol_blocks)
     items = bundle["items"]
     if not items:
@@ -519,6 +530,20 @@ async def parse_output_endpoint(job_id: str, body: ParseOutputRequest):
                 "source": "gemini",
                 "created_at": now_iso(),
             })
+        
+        # If this is a key-only update, we only patch the correct_answer field
+        if q.get("is_key_update_only"):
+            if existing:
+                await db.jt_questions.update_one(
+                    {"job_id": job_id, "question_number": n},
+                    {"$set": {
+                        "correct_answer": q.get("correct_answer"),
+                        "updated_at": now_iso()
+                    }}
+                )
+                saved += 1
+            continue
+
         pyq_source = q.get("pyq_source") or ""
         is_pyq = bool(pyq_source)
         pyq_group = q.get("pyq_group") or ""
