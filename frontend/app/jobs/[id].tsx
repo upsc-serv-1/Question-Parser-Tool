@@ -1205,6 +1205,12 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
   const [category, setCategory] = useState(job.metadata?.exam_frame?.exam_category || "cse");
   const [stage, setStage] = useState(job.metadata?.exam_frame?.stage || "prelims");
   const [paper, setPaper] = useState(job.metadata?.exam_frame?.paper || "pre_gs1");
+  const [programId, setProgramId] = useState(job.metadata?.program_id || "");
+  const [programName, setProgramName] = useState(job.metadata?.program_name || "");
+  const [defaultMinutes, setDefaultMinutes] = useState(String(job.metadata?.defaultMinutes || ""));
+  const [sourceMode, setSourceMode] = useState(job.metadata?.sourceMode || "docx-inline");
+  const [instituteId, setInstituteId] = useState(job.metadata?.institute_id || "");
+  const [instituteName, setInstituteName] = useState(job.metadata?.institute_name || "");
   const [saving, setSaving] = useState(false);
 
   // Sync state with job changes
@@ -1218,6 +1224,12 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
     setCategory(job.metadata?.exam_frame?.exam_category || "cse");
     setStage(job.metadata?.exam_frame?.stage || "prelims");
     setPaper(job.metadata?.exam_frame?.paper || "pre_gs1");
+    setProgramId(job.metadata?.program_id || "");
+    setProgramName(job.metadata?.program_name || "");
+    setDefaultMinutes(String(job.metadata?.defaultMinutes || ""));
+    setSourceMode(job.metadata?.sourceMode || "docx-inline");
+    setInstituteId(job.metadata?.institute_id || "");
+    setInstituteName(job.metadata?.institute_name || "");
   }, [job]);
 
   const saveMetadata = async () => {
@@ -1230,6 +1242,12 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
         series: series,
         level: level,
         paperType: paperType,
+        program_id: programId,
+        program_name: programName,
+        defaultMinutes: parseInt(defaultMinutes, 10) || null,
+        sourceMode: sourceMode,
+        institute_id: instituteId,
+        institute_name: instituteName,
         exam_frame: {
           exam_category: category,
           stage: stage,
@@ -1287,6 +1305,36 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
             <View style={{ flex: 1 }}>
               <Text style={[S.label, { marginBottom: 4 }]}>Paper Type</Text>
               <TextInput value={paperType} onChangeText={setPaperType} style={S.input} placeholder="e.g. Full Length / Sectional" />
+            </View>
+          </View>
+
+          <View style={[S.rowGap, { gap: 10, marginTop: 4 }]}>
+            <View style={{ flex: 1 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Program ID</Text>
+              <TextInput value={programId} onChangeText={setProgramId} style={S.input} placeholder="e.g. gs-simulator" />
+            </View>
+            <View style={{ flex: 1.5 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Program Name</Text>
+              <TextInput value={programName} onChangeText={setProgramName} style={S.input} placeholder="e.g. GS Simulator" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Test Duration (Mins)</Text>
+              <TextInput value={defaultMinutes} onChangeText={setDefaultMinutes} keyboardType="number-pad" style={S.input} placeholder="e.g. 120" />
+            </View>
+          </View>
+
+          <View style={[S.rowGap, { gap: 10, marginTop: 4 }]}>
+            <View style={{ flex: 1 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Institute ID</Text>
+              <TextInput value={instituteId} onChangeText={setInstituteId} style={S.input} placeholder="e.g. vision" />
+            </View>
+            <View style={{ flex: 1.5 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Institute Name</Text>
+              <TextInput value={instituteName} onChangeText={setInstituteName} style={S.input} placeholder="e.g. Vision IAS" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Source Mode</Text>
+              <TextInput value={sourceMode} onChangeText={setSourceMode} style={S.input} placeholder="docx-inline / docx-table" />
             </View>
           </View>
 
