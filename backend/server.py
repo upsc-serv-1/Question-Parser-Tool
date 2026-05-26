@@ -49,6 +49,7 @@ logger = logging.getLogger("jsontool")
 
 
 @app.get("/api/health")
+@api.get("/health")
 async def health_check():
     """Health check endpoint for Render."""
     from services.ocr import is_mac_ocr_available, is_tesseract_available
@@ -419,6 +420,15 @@ async def generate_prompts(job_id: str, body: GeneratePromptsRequest):
     items = bundle["items"]
     if not items:
         raise HTTPException(400, "No questions detected in PDF")
+
+    # Map pre-existing parsed answer keys from the database (e.g. from pasted KEY SHEET)
+    db_questions = await db.jt_questions.find({"job_id": job_id}, {"question_number": 1, "correct_answer": 1, "_id": 0}).to_list(length=2000)
+    db_keys_map = {q["question_number"]: q["correct_answer"] for q in db_questions if q.get("correct_answer")}
+    
+    for it in items:
+        q_num = it["number"]
+        if q_num in db_keys_map:
+            it["correct_answer"] = db_keys_map[q_num]
 
     batches = chunk_into_batches(items, batch_size=body.batch_size)
     # Wipe old batches for this job
