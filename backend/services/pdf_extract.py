@@ -6,6 +6,22 @@ from typing import List, Dict
 import re
 
 
+def is_cover_page(text: str) -> bool:
+    """Detect if page text represents a cover/instruction sheet."""
+    lower = text.lower()
+    indicators = [
+        "do not open", 
+        "examination", 
+        "serial no", 
+        "test booklet", 
+        "commencement",
+        "instructions to candidates",
+        "time allowed"
+    ]
+    matches = sum(1 for ind in indicators if ind in lower)
+    return matches >= 2
+
+
 def extract_pages(pdf_path: str, use_ocr: bool = False, columns: int = 1) -> List[Dict]:
     """Return list of {page_num, text, char_count} for each page.
     
@@ -16,14 +32,17 @@ def extract_pages(pdf_path: str, use_ocr: bool = False, columns: int = 1) -> Lis
     pages = []
     
     # Import OCR if needed
-    from .ocr import ocr_page_via_tesseract, is_tesseract_available
+    from .ocr import ocr_page_via_tesseract, ocr_page_via_mac_ocr, is_mac_ocr_available
 
     for i, page in enumerate(doc):
         raw_text = ""
         
         if use_ocr:
-            # Forced OCR path
-            raw_text = ocr_page_via_tesseract(page)
+            # Forced OCR path (native macOS Vision if available, fallback to Tesseract)
+            if is_mac_ocr_available():
+                raw_text = ocr_page_via_mac_ocr(pdf_path, i + 1, columns=columns)
+            else:
+                raw_text = ocr_page_via_tesseract(page)
         else:
             # Intelligent Text Path
             if columns <= 1:
@@ -52,6 +71,10 @@ def extract_pages(pdf_path: str, use_ocr: bool = False, columns: int = 1) -> Lis
                 
                 raw_text = "\n".join(page_parts)
         
+        # Completely ignore cover/instruction pages to avoid noise and false question matches
+        if is_cover_page(raw_text):
+            raw_text = ""
+
         pages.append({
             "page_num": i + 1,
             "text": raw_text,

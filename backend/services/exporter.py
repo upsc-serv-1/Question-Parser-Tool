@@ -42,11 +42,11 @@ def build_schema2_json(job: Dict, questions: List[Dict]) -> Dict[str, Any]:
         pyq_group = q.get("pyq_group") or ""
         pyq_flags = _compute_pyq_flags(pyq_group)
 
-        # Build source_attribution_label if not set
+        # Build source_attribution_label if not set (e.g., "CSE 2015" or "CMS 2025")
         sal = q.get("source_attribution_label") or ""
         if not sal and is_pyq and pyq_group and q.get("pyq_year"):
-            exam_label = q.get("pyq_exam_label") or "Prelims"
-            sal = f"{pyq_group} {exam_label} {q['pyq_year']}"
+            group_clean = pyq_group.replace("UPSC ", "").strip()
+            sal = f"{group_clean} {q['pyq_year']}"
 
         exam_info = {
             "isPyq": is_pyq,
@@ -80,9 +80,8 @@ def build_schema2_json(job: Dict, questions: List[Dict]) -> Dict[str, Any]:
             "correctAnswer": q.get("correct_answer") or "",
             "explanationMarkdown": q.get("explanation_markdown") or "",
             "exam_info": exam_info,
+            "source_attribution_label": sal,
         }
-        if sal:
-            q_out["source_attribution_label"] = sal
         out_questions.append(q_out)
 
     final = {
@@ -97,6 +96,10 @@ def build_schema2_json(job: Dict, questions: List[Dict]) -> Dict[str, Any]:
         "paperType": md.get("paperType", ""),
         "defaultMinutes": _safe_int(md.get("defaultMinutes"), 0),
         "sourceMode": md.get("sourceMode", "docx-inline"),
+        "schema_version": md.get("schema_version", "2.0"),
+        "institute_id": md.get("institute_id"),
+        "institute_name": md.get("institute_name"),
+        "exam_frame": exam_frame,
         "questions": out_questions,
     }
     return final

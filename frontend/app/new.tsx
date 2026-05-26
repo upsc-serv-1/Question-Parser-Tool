@@ -13,9 +13,9 @@ import { useRouter } from "expo-router";
 import { sharedStyles as S, T } from "../src/theme";
 import { createJob, api } from "../src/api";
 
-const EXAM_CATEGORIES = ["cse", "state_psc", "bpsc", "uppcs", "mppsc", "other"];
+const EXAM_CATEGORIES = ["cse", "upsc_cms", "state_psc", "bpsc", "uppcs", "mppsc", "other"];
 const STAGES = ["prelims", "mains"];
-const PAPERS = ["pre_gs1", "pre_csat", "mains_gs1", "mains_gs2", "mains_gs3", "mains_gs4", "mains_essay", "other"];
+const PAPERS = ["pre_gs1", "pre_csat", "mains_gs1", "mains_gs2", "mains_gs3", "mains_gs4", "mains_essay", "paper_1", "paper_2", "other"];
 const LEVELS = ["Full Test", "Sectional Test", "Subject Test", "PYQ"];
 const PAPER_TYPES = ["Full Length", "Sectional", "Topic-wise"];
 
@@ -103,7 +103,22 @@ export default function NewJobScreen() {
   const addBatch = () => setBatches((curr) => [...curr, createEmptyBatch()]);
   const removeBatch = (id: string) => setBatches((curr) => curr.filter((b) => b.id !== id));
   const updateBatch = (id: string, patch: Partial<BatchEntry>) => {
-    setBatches((curr) => curr.map((b) => (b.id === id ? { ...b, ...patch } : b)));
+    setBatches((curr) => curr.map((b) => {
+      if (b.id === id) {
+        const next = { ...b, ...patch };
+        if (patch.examCategory) {
+          if (patch.examCategory === "upsc_cms") {
+            next.stage = "prelims";
+            next.paper = "paper_1";
+          } else {
+            next.stage = "prelims";
+            next.paper = "pre_gs1";
+          }
+        }
+        return next;
+      }
+      return b;
+    }));
   };
 
   const handleQpFile = async (id: string, file: FileLike) => {
@@ -343,7 +358,11 @@ export default function NewJobScreen() {
                   <Picker value={batch.stage} onChange={(v) => updateBatch(batch.id, { stage: v })} options={STAGES} />
                 </Field>
                 <Field label="Paper" style={{ flex: 1 }}>
-                  <Picker value={batch.paper} onChange={(v) => updateBatch(batch.id, { paper: v })} options={PAPERS} />
+                  <Picker 
+                    value={batch.paper} 
+                    onChange={(v) => updateBatch(batch.id, { paper: v })} 
+                    options={batch.examCategory === "upsc_cms" ? ["paper_1", "paper_2", "other"] : ["pre_gs1", "pre_csat", "mains_gs1", "mains_gs2", "mains_gs3", "mains_gs4", "mains_essay", "other"]} 
+                  />
                 </Field>
               </View>
             </View>

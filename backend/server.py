@@ -66,6 +66,7 @@ PROGRAM_PATTERNS = [
     ("pyq-book", "PYQ Book", ["pyq book", "pyq-book"]),
     ("test-series", "Test Series", ["test series", "test-series"]),
     ("cse", "CSE", ["cse prelims", "cse mains"]),
+    ("upsc-cms", "UPSC CMS", ["upsc cms", "upsc-cms", "combined medical services"]),
 ]
 
 
@@ -224,8 +225,15 @@ async def root():
 
 
 @api.get("/taxonomy")
-async def get_taxonomy():
-    return {"entries": load_taxonomy()}
+async def get_taxonomy(category: Optional[str] = None):
+    tax = load_taxonomy()
+    if category == "upsc_cms":
+        medical_subjects = {"General Medicine", "General Surgery", "Obstetrics & Gynecology", "Preventive & Social Medicine", "Pediatrics"}
+        tax = [t for t in tax if t.get("subject") in medical_subjects]
+    elif category == "cse":
+        medical_subjects = {"General Medicine", "General Surgery", "Obstetrics & Gynecology", "Preventive & Social Medicine", "Pediatrics"}
+        tax = [t for t in tax if t.get("subject") not in medical_subjects]
+    return {"entries": tax}
 
 
 @api.get("/filename-hints")
@@ -392,6 +400,23 @@ async def generate_prompts(job_id: str, body: GeneratePromptsRequest):
     # Wipe old batches for this job
     await db.jt_batches.delete_many({"job_id": job_id})
 
+    answer_key_context = ""
+    if not job.get("sol_pdf_path"):
+        key_texts = []
+        for p in qp_pages:
+            txt = (p.get("text") or "").lower()
+            indicators = [
+                "q. no.", "q.no.", "series a", "series b", "series c", "series d",
+                "scoring key", "answer key", "official key", "key sheet"
+            ]
+            if any(ind in txt for ind in indicators):
+                key_texts.append(p.get("text", ""))
+            elif "key" in txt and "subject" in txt and ("series" in txt or "dropped" in txt):
+                key_texts.append(p.get("text", ""))
+        if key_texts:
+            answer_key_context = "\n\n".join(key_texts)
+
+    exam_category = job.get("metadata", {}).get("exam_frame", {}).get("exam_category", "cse")
     out = []
     for idx, batch in enumerate(batches):
         prompt_text = build_batch_prompt(
@@ -400,6 +425,8 @@ async def generate_prompts(job_id: str, body: GeneratePromptsRequest):
             total_batches=len(batches),
             subject_filter=body.subject_filter or None,
             extra_instructions=body.extra_instructions,
+            exam_category=exam_category,
+            answer_key_context=answer_key_context,
         )
         nums = [it["number"] for it in batch]
         doc = {
@@ -455,9 +482,15 @@ async def get_prompt_docx(job_id: str, batch_index: int):
 
 @api.post("/jobs/{job_id}/parse-output")
 async def parse_output_endpoint(job_id: str, body: ParseOutputRequest):
-    await _get_job(job_id)
+    job = await _get_job(job_id)
     parsed = parse_output(body.output_text)
     tax = load_taxonomy()
+    exam_category = job.get("metadata", {}).get("exam_frame", {}).get("exam_category", "cse")
+    medical_subjects = {"General Medicine", "General Surgery", "Obstetrics & Gynecology", "Preventive & Social Medicine", "Pediatrics"}
+    if exam_category == "upsc_cms":
+        tax = [t for t in tax if t.get("subject") in medical_subjects]
+    else:
+        tax = [t for t in tax if t.get("subject") not in medical_subjects]
     parsed["questions"] = validate_against_taxonomy(parsed["questions"], tax)
 
     saved = 0
@@ -553,7 +586,14 @@ async def update_question(job_id: str, q_num: int, body: QuestionUpdate):
     update["edited"] = True
     update["updated_at"] = now_iso()
     if "microtopic" in update or "subject" in update or "section_group" in update:
+        job = await _get_job(job_id)
+        exam_category = job.get("metadata", {}).get("exam_frame", {}).get("exam_category", "cse")
         tax = load_taxonomy()
+        medical_subjects = {"General Medicine", "General Surgery", "Obstetrics & Gynecology", "Preventive & Social Medicine", "Pediatrics"}
+        if exam_category == "upsc_cms":
+            tax = [t for t in tax if t.get("subject") in medical_subjects]
+        else:
+            tax = [t for t in tax if t.get("subject") not in medical_subjects]
         triple = (
             update.get("subject", existing.get("subject")),
             update.get("section_group", existing.get("section_group")),
@@ -609,7 +649,7 @@ async def restore_revision(job_id: str, q_num: int, rev_id: str):
 
 @api.patch("/jobs/{job_id}/bulk-questions")
 async def bulk_update_questions(job_id: str, body: BulkQuestionUpdate):
-    await _get_job(job_id)
+    job = await _get_job(job_id)
     if not body.question_numbers:
         return {"updated": 0}
     
@@ -617,11 +657,38 @@ async def bulk_update_questions(job_id: str, body: BulkQuestionUpdate):
     patch["updated_at"] = now_iso()
     patch["edited"] = True
     
-    r = await db.jt_questions.update_many(
-        {"job_id": job_id, "question_number": {"$in": body.question_numbers}},
-        {"$set": patch}
-    )
-    return {"updated": r.modified_count}
+    exam_category = job.get("metadata", {}).get("exam_frame", {}).get("exam_category", "cse")
+    tax = load_taxonomy()
+    medical_subjects = {"General Medicine", "General Surgery", "Obstetrics & Gynecology", "Preventive & Social Medicine", "Pediatrics"}
+    if exam_category == "upsc_cms":
+        tax = [t for t in tax if t.get("subject") in medical_subjects]
+    else:
+        tax = [t for t in tax if t.get("subject") not in medical_subjects]
+    
+    valid_set = {(t["subject"], t["sectionGroup"], t["microTopic"]) for t in tax}
+    valid_micros = {t["microTopic"] for t in tax}
+    
+    updated_count = 0
+    for q_num in body.question_numbers:
+        existing = await db.jt_questions.find_one({"job_id": job_id, "question_number": q_num}, {"_id": 0})
+        if not existing:
+            continue
+        
+        q_patch = dict(patch)
+        if "subject" in patch or "section_group" in patch or "microtopic" in patch:
+            sub = patch.get("subject", existing.get("subject"))
+            sg = patch.get("section_group", existing.get("section_group"))
+            mt = patch.get("microtopic", existing.get("microtopic"))
+            q_patch["microtopic_valid"] = (sub, sg, mt) in valid_set
+            q_patch["microtopic_known"] = mt in valid_micros
+            
+        await db.jt_questions.update_one(
+            {"job_id": job_id, "question_number": q_num},
+            {"$set": q_patch}
+        )
+        updated_count += 1
+        
+    return {"updated": updated_count}
 
 
 @api.get("/jobs/{job_id}/questions")
@@ -673,8 +740,15 @@ async def export_job(job_id: str, format: str = "json"):
     job = await _get_job(job_id)
     qs = await db.jt_questions.find({"job_id": job_id}, {"_id": 0}).sort("question_number", 1).to_list(length=2000)
     if format == "json":
+        import json as _json
         data = build_schema2_json(job, qs)
-        return JSONResponse(data)
+        json_str = _json.dumps(data, indent=2)
+        fname = f"{job['metadata'].get('id', 'job')}.json"
+        return Response(
+            content=json_str,
+            media_type="application/json",
+            headers={"Content-Disposition": f'attachment; filename="{fname}"'}
+        )
     if format == "md":
         text = build_markdown(job, qs)
         return Response(content=text, media_type="text/markdown",

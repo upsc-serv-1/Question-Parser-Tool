@@ -3,12 +3,9 @@ from __future__ import annotations
 import re
 from typing import List, Dict, Optional
 
-# Matches "Q.1)", "Q. 1.", "Q1)", "Q 1)", "Question 1." — REQUIRES the "Q" prefix at line start.
-# This is intentionally strict to avoid catching article numbers, list items, etc. UPSC coaching
-# PDFs almost universally prefix questions with `Q.N)` or `Q. N.` style, so requiring the prefix
-# is dramatically more precise than allowing bare numbers.
+# Matches "Q.1)", "Q. 1.", "Q1)", "Question 1.", or bare "1.", "1)" at the start of a line.
 Q_HEADING_RE = re.compile(
-    r"^\s*(?:Q(?:uestion)?\.?\s*)(\d{1,3})\s*[\.\)]\s*",
+    r"^\s*(?:Q(?:uestion)?\.?\s*|)(\d{1,3})\s*[\.\)]\s*",
     re.MULTILINE | re.IGNORECASE,
 )
 
@@ -16,29 +13,62 @@ Q_HEADING_RE = re.compile(
 def split_questions(text: str) -> List[Dict]:
     """Split a chunk of text into question blocks indexed by question number.
 
-    Returns list of {"number": int, "text": str} sorted by number.
-    Duplicate numbers keep the longest block.
+    Supports sequential bare numbers (e.g. "1. ", "2. ") by filtering out
+    non-sequential indices (like sub-statements, e.g. "1. Option one" inside a question).
     """
     if not text:
         return []
     matches = list(Q_HEADING_RE.finditer(text))
     if not matches:
         return []
-    blocks: Dict[int, str] = {}
-    for i, m in enumerate(matches):
+
+    # Monotonic sequential filter to prevent statement indices (e.g. 1., 2.) inside
+    # question stems from being misidentified as new questions.
+    valid_matches = []
+    expected = None
+
+    for m in matches:
         try:
             num = int(m.group(1))
         except ValueError:
             continue
-        # Skip ridiculously large numbers (likely option counters or refs)
         if num < 1 or num > 999:
             continue
+
+        # If it is a clear explicit "Q. N" or "Question N" header, always accept it
+        is_explicit_q = "q" in m.group(0).lower() or "question" in m.group(0).lower()
+        if is_explicit_q:
+            valid_matches.append(m)
+            expected = num + 1
+            continue
+
+        # For bare numbers (e.g., "1.", "2."), enforce sequence checks
+        if expected is None:
+            # First question in a paper should start at 1, 2, or 3
+            if num <= 5:
+                valid_matches.append(m)
+                expected = num + 1
+        else:
+            # Tolerant step: allow skipping up to 5 questions in case OCR missed a number
+            if expected <= num <= expected + 5:
+                valid_matches.append(m)
+                expected = num + 1
+
+    if not valid_matches:
+        # Fallback to legacy non-sequential duplicate filtering if no sequential match
+        # was formed (to guarantee safety for non-standard formats)
+        valid_matches = matches
+
+    blocks: Dict[int, str] = {}
+    for i, m in enumerate(valid_matches):
+        num = int(m.group(1))
         start = m.start()
-        end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
+        end = valid_matches[i + 1].start() if i + 1 < len(valid_matches) else len(text)
         body = text[start:end].strip()
-        # Only keep if previously empty, or this body is longer
+        # Keep longest block to filter out minor short-form duplicate hits
         if num not in blocks or len(body) > len(blocks[num]):
             blocks[num] = body
+            
     return [{"number": n, "text": blocks[n]} for n in sorted(blocks)]
 
 

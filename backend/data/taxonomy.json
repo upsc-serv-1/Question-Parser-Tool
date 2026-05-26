@@ -1198,5 +1198,2300 @@
     "subject": "CSAT",
     "sectionGroup": "Maths",
     "microTopic": "Geometry and Mensuration"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Ischemic Heart Disease - Stable Angina & Primary Medical Management"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Ischemic Heart Disease - Acute Coronary Syndrome (STEMI/NSTEMI) & Intervention"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Heart Failure - Chronic Heart Failure (HFrEF/HFpEF) & Guideline-Directed Medical Therapy"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Heart Failure - Acute Decompensated Heart Failure & Pulmonary Edema"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Hypertension - Primary Hypertension & First-Line Antihypertensives"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Hypertension - Hypertensive Emergencies & Target Organ Damage"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Arrhythmias - Bradyarrhythmias & Heart Blocks"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Arrhythmias - Tachyarrhythmias (AFib, SVT, VT) & Antiarrhythmic Drugs"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Valvular Heart Diseases - Rheumatic Fever & Rheumatic Heart Disease (Mitral Stenosis)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Valvular Heart Diseases - Aortic Valve Disease (Stenosis/Regurgitation)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Infective Endocarditis - Native & Prosthetic Valve Endocarditis Diagnosis (Duke Criteria)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Infective Endocarditis - Endocarditis Prophylaxis Protocols"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Myocardial & Pericardial Diseases - Cardiomyopathies (Hypertrophic, Dilated, Restrictive)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Myocardial & Pericardial Diseases - Acute Pericarditis & Cardiac Tamponade"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Critical Care Medicine",
+    "microTopic": "Shock - Sepsis & Septic Shock (Sepsis-3 & Vasopressors)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Critical Care Medicine",
+    "microTopic": "Shock - Anaphylactic Shock & Adrenaline Protocols"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Critical Care Medicine",
+    "microTopic": "Shock - Cardiogenic Shock & Inotropes"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Diabetes Mellitus - Type 2 Diabetes - Uncomplicated & Oral Hypoglycemics"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Diabetes Mellitus - Type 1 Diabetes & Insulin Regimens"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Diabetes Mellitus - Acute Complications - Diabetic Ketoacidosis (DKA) & HHS"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Thyroid Disorders - Primary Hypothyroidism & Levothyroxine Therapy"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Thyroid Disorders - Thyrotoxicosis & Thyroid Storm Management"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Adrenal Disorders - Cushing's Syndrome & Hypercortisolism"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Adrenal Disorders - Addison's Disease & Adrenal Crisis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Adrenal Disorders - Pheochromocytoma (Adrenal Medulla)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Pituitary Disorders - Acromegaly & Anterior Pituitary Tumors"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Pituitary Disorders - Prolactinoma & Hyperprolactinemia"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Parathyroid & Calcium - Primary Hyperparathyroidism & Hypercalcemia"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Parathyroid & Calcium - Hypocalcemia & Tetany Management"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Tuberculosis - Primary Pulmonary TB & First-Line ATT (Drug-Sensitive)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Tuberculosis - Extra-Pulmonary TB (e.g., Lymph Node, Skeletal, CNS)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Tuberculosis - MDR-TB and Extensively Drug-Resistant TB"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Tuberculosis - Latent TB Infection (LTBI) & Prophylaxis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Obstructive Airway Diseases - Bronchial Asthma - Chronic Management & Stepwise Therapy"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Obstructive Airway Diseases - Acute Exacerbation of Asthma & Status Asthmaticus"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Obstructive Airway Diseases - COPD - GOLD Guidelines & Acute Exacerbation"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Pneumonia - Community-Acquired Pneumonia (CAP) & CURB-65"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Pneumonia - Hospital-Acquired (HAP) & Ventilator-Associated Pneumonia (VAP)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Pleural Diseases - Pleural Effusion (Exudate vs Transudate & Light's Criteria)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Pleural Diseases - Pneumothorax (Spontaneous vs Tension)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Pulmonary Vascular Diseases - Pulmonary Embolism Diagnosis & Thrombolysis Protocol"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Pulmonary Vascular Diseases - Deep Vein Thrombosis (DVT) Prophylaxis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Interstitial & Occupational Lung Diseases - Interstitial Lung Disease (ILD) & Sarcoidosis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Interstitial & Occupational Lung Diseases - Pneumoconioses (Silicosis, Asbestosis, Coal Worker's)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Acute Respiratory Failure - Acute Respiratory Distress Syndrome (ARDS) Criteria"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Malaria - Uncomplicated Malaria & Species-Specific Treatment"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Malaria - Severe/Complicated Malaria & Artesunate Regimens"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Enteric Fever - Typhoid Fever - Clinical Features & First-Line Antibiotics"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Enteric Fever - Typhoid Complications - Intestinal Perforation & Carrier State"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "HIV/AIDS - Primary HIV Infection & Standard ART Regimens"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "HIV/AIDS - Opportunistic Infections & Post-Exposure Prophylaxis (PEP)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Vector-Borne Viral Diseases - Dengue Fever - Warning Signs & Fluid Management"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Vector-Borne Viral Diseases - Dengue Shock Syndrome (DSS) & Hemorrhagic Fever"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Zoonotic Infections - Rabies Post-Exposure Prophylaxis (PEP)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Zoonotic Infections - Leptospirosis & Brucellosis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Bacterial Infections - Tetanus Management & Immunization Schedule"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Rickettsial Diseases - Scrub Typhus Diagnosis & Treatment"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Fungal Infections - Mucormycosis & Invasive Candidiasis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Viral Infections - COVID-19 Management Algorithms"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Sexually Transmitted Infections - Syphilis Diagnosis & Penicillin Regimens"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Parasitic Infections - Visceral Leishmaniasis (Kala-Azar) & Treatment"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Parasitic Infections - Lymphatic Filariasis & Mass Drug Administration"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Infectious Diseases",
+    "microTopic": "Parasitic Infections - Intestinal Protozoa (Amoebiasis & Giardiasis)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Cerebrovascular Accidents - Ischemic Stroke - Acute Thrombolysis Protocol"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Cerebrovascular Accidents - Hemorrhagic Stroke & Intracranial Pressure Management"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Seizure Disorders - Epilepsy - Classification & Standard Antiepileptic Drugs"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Seizure Disorders - Status Epilepticus Algorithm"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Neuroinfections - Acute Bacterial Meningitis - Empiric Antibiotics"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Neuroinfections - Viral Encephalitis & Acyclovir Therapy"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Movement Disorders - Parkinson's Disease - Pharmacotherapy"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Demyelinating Diseases - Multiple Sclerosis Diagnosis & Disease-Modifying Therapies"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Neuromuscular Disorders - Guillain-Barr'e9 Syndrome (GBS)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Neuromuscular Disorders - Myasthenia Gravis & Myasthenic Crisis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Neurodegenerative Diseases - Alzheimer's Disease & Dementia Types"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Neurology",
+    "microTopic": "Nutritional Neuropathies - Wernicke-Korsakoff Syndrome & Thiamine Replacement"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "Acid Peptic Disease - Gastritis, GERD & H. pylori Eradication"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "Acid Peptic Disease - Complications - Peptic Ulcer Perforation & Bleeding"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "GI Bleeding - Upper GI Bleed (Variceal vs Non-Variceal Management)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "GI Bleeding - Lower GI Bleed Diagnosis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "Hepatic Disorders - Acute Viral Hepatitis - Diagnosis & Supportive Care"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "Hepatic Disorders - Liver Cirrhosis & Portal Hypertension Management"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "Hepatic Disorders - Hepatic Encephalopathy & Spontaneous Bacterial Peritonitis (SBP)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "Pancreatic Disorders - Acute Pancreatitis Severity Criteria & Management"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "Pancreatic Disorders - Chronic Pancreatitis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "Intestinal Disorders - Inflammatory Bowel Disease (Crohn's vs Ulcerative Colitis)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "Intestinal Disorders - Malabsorption Syndromes (Celiac Disease)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Gastroenterology",
+    "microTopic": "Intestinal Disorders - Irritable Bowel Syndrome (IBS)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Renal Failure - Acute Kidney Injury (AKI) - KDIGO Criteria & Reversible Causes"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Renal Failure - Chronic Kidney Disease (CKD) - Staging & Dialysis Indications"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Glomerular Diseases - Nephrotic Syndrome - Primary vs Secondary Causes"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Glomerular Diseases - Nephritic Syndrome & Post-Streptococcal Glomerulonephritis (PSGN)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Tubulointerstitial & Cystic Diseases - Urinary Tract Infections (UTI) & Pyelonephritis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Tubulointerstitial & Cystic Diseases - Acute Interstitial Nephritis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Tubulointerstitial & Cystic Diseases - Autosomal Dominant Polycystic Kidney Disease (ADPKD)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Tubular Disorders - Renal Tubular Acidosis (Type 1, 2, and 4)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Acid-Base & Electrolytes - Hyponatremia & Hypernatremia Correction"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Acid-Base & Electrolytes - Potassium Disorders (Hypo/Hyperkalemia) & ECG Changes"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Hematology",
+    "microTopic": "Anemias - Iron Deficiency Anemia (IDA) & Oral Iron Therapy"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Hematology",
+    "microTopic": "Anemias - Megaloblastic Anemia & Neurological Complications"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Hematology",
+    "microTopic": "Anemias - Hemolytic Anemias (Sickle Cell, Thalassemia) & Crises"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Hematology",
+    "microTopic": "Bone Marrow Disorders - Aplastic Anemia & Pancytopenia Evaluation"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Hematology",
+    "microTopic": "Bleeding Disorders - Immune Thrombocytopenia (ITP) & First-Line Steroids"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Hematology",
+    "microTopic": "Bleeding Disorders - Hemophilia & Coagulation Factor Deficiencies"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Hematology",
+    "microTopic": "Hematological Malignancies - Acute Leukemias (AML, ALL)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Hematology",
+    "microTopic": "Hematological Malignancies - Chronic Leukemias (CML, CLL)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Hematology",
+    "microTopic": "Hematological Malignancies - Lymphomas (Hodgkin vs Non-Hodgkin Lymphoma)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Hematology",
+    "microTopic": "Plasma Cell Dyscrasias - Multiple Myeloma Diagnosis & CRAB Criteria"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Medical Oncology",
+    "microTopic": "Oncologic Emergencies - Tumor Lysis Syndrome (TLS) Prevention & Treatment"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Medical Oncology",
+    "microTopic": "Oncologic Emergencies - Superior Vena Cava (SVC) Syndrome"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Rheumatology",
+    "microTopic": "Joint Disorders - Rheumatoid Arthritis - Diagnosis & DMARDs"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Rheumatology",
+    "microTopic": "Joint Disorders - Osteoarthritis - Medical & Lifestyle Management"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Rheumatology",
+    "microTopic": "Connective Tissue Diseases - Systemic Lupus Erythematosus (SLE) - Criteria & Management"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Rheumatology",
+    "microTopic": "Connective Tissue Diseases - Scleroderma (Systemic Sclerosis) & Crest Syndrome"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Rheumatology",
+    "microTopic": "Connective Tissue Diseases - Sj'f6gren's Syndrome"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Rheumatology",
+    "microTopic": "Crystal Arthropathies - Gout - Acute Flares vs Chronic Urate-Lowering Therapy"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Rheumatology",
+    "microTopic": "Vasculitis Syndromes - Large Vessel (Takayasu, Giant Cell Arteritis)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Rheumatology",
+    "microTopic": "Vasculitis Syndromes - Medium & Small Vessel (Kawasaki, GPA/Wegener's)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Rheumatology",
+    "microTopic": "Spondyloarthropathies - Ankylosing Spondylitis & HLA-B27"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Rheumatology",
+    "microTopic": "Inflammatory Myopathies - Polymyositis & Dermatomyositis"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Toxicology & Environmental Medicine",
+    "microTopic": "Agricultural Poisoning - Organophosphate (OP) Poisoning - Atropine & Pralidoxime"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Toxicology & Environmental Medicine",
+    "microTopic": "Agricultural Poisoning - Aluminum Phosphide & Celphos Poisoning"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Toxicology & Environmental Medicine",
+    "microTopic": "Animal Toxins - Snake Bite - Neurotoxic vs Hemotoxic & ASV Protocol"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Toxicology & Environmental Medicine",
+    "microTopic": "Animal Toxins - Scorpion Sting Management (Prazosin)"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Toxicology & Environmental Medicine",
+    "microTopic": "Common Drug Toxicities - Paracetamol (Acetaminophen) Overdose & NAC Therapy"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Toxicology & Environmental Medicine",
+    "microTopic": "Common Drug Toxicities - Opioid Overdose & Naloxone Protocol"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Toxicology & Environmental Medicine",
+    "microTopic": "Substance Abuse - Alcohol Withdrawal & Delirium Tremens"
+  },
+  {
+    "subject": "General Medicine",
+    "sectionGroup": "Toxicology & Environmental Medicine",
+    "microTopic": "Environmental Emergencies - Heat Exhaustion & Heat Stroke Cooling Protocols"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Basic Surgical Principles",
+    "microTopic": "Metabolic Response to Injury - Phases of Response (Ebb and Flow) & Endocrine Changes"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Basic Surgical Principles",
+    "microTopic": "Wound Healing & Care - Phases of Wound Healing (Primary vs Secondary Intention)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Basic Surgical Principles",
+    "microTopic": "Wound Healing & Care - Hypertrophic Scars vs Keloids (Management & Triamcinolone)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Basic Surgical Principles",
+    "microTopic": "Surgical Site Infections (SSI) - SSI Classification & Prophylactic Antibiotics"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Basic Surgical Principles",
+    "microTopic": "Specific Surgical Infections - Tetanus, Gas Gangrene & Necrotizing Fasciitis (Fournier's Gangrene)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Basic Surgical Principles",
+    "microTopic": "Surgical Nutrition - Enteral vs Parenteral Nutrition (TPN) & Refeeding Syndrome"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Basic Surgical Principles",
+    "microTopic": "Transfusion & Hemostasis - Massive Transfusion Protocol, Blood Components & Coagulopathy"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Trauma & Critical Care",
+    "microTopic": "ATLS Protocol - Primary Survey (ABCDE) & Secondary Survey"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Trauma & Critical Care",
+    "microTopic": "Shock - Hypovolemic Shock (Classes of Hemorrhage) & Fluid Resuscitation"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Trauma & Critical Care",
+    "microTopic": "Shock - Septic, Cardiogenic, and Neurogenic Shock Evaluation"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Trauma & Critical Care",
+    "microTopic": "Burns - Burn Depth Assessment & Wallace Rule of Nines"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Trauma & Critical Care",
+    "microTopic": "Burns - Fluid Resuscitation (Parkland Formula) & Urine Output Monitoring"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Trauma & Critical Care",
+    "microTopic": "Burns - Inhalational Injury & Indications for Escharotomy"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Head, Neck & Face",
+    "microTopic": "Oral Cavity - Premalignant Lesions (Leukoplakia, Erythroplakia, OSMF)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Head, Neck & Face",
+    "microTopic": "Oral Cavity - Squamous Cell Carcinoma (SCC) of Lip & Tongue (Neck Dissections)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Head, Neck & Face",
+    "microTopic": "Salivary Glands - Pleomorphic Adenoma vs Warthin's Tumor"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Head, Neck & Face",
+    "microTopic": "Salivary Glands - Parotidectomy Complications (Frey's Syndrome, Facial Nerve Palsy)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Head, Neck & Face",
+    "microTopic": "Cervical Swellings - Midline Swellings (Thyroglossal Duct Cyst, Dermoid)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Head, Neck & Face",
+    "microTopic": "Cervical Swellings - Lateral Swellings (Branchial Cyst, Cystic Hygroma)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Endocrine Surgery",
+    "microTopic": "Thyroid Gland - Solitary Thyroid Nodule (STN) Evaluation & Bethesda System"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Endocrine Surgery",
+    "microTopic": "Thyroid Gland - Multinodular Goiter & Indications for Surgery"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Endocrine Surgery",
+    "microTopic": "Thyroid Malignancies - Papillary vs Follicular Thyroid Carcinoma (Surgery vs RAI)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Endocrine Surgery",
+    "microTopic": "Thyroid Malignancies - Medullary Thyroid Carcinoma & MEN Syndromes"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Endocrine Surgery",
+    "microTopic": "Thyroid Surgery Complications - Recurrent Laryngeal Nerve (RLN) Injury & Post-Op Hypocalcemia"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Endocrine Surgery",
+    "microTopic": "Parathyroid Gland - Primary Hyperparathyroidism (Adenoma) & Sestamibi Scan"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Endocrine Surgery",
+    "microTopic": "Adrenal Gland - Pheochromocytoma Preparation (Alpha then Beta Blockade)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Breast Surgery",
+    "microTopic": "Benign Breast Diseases - Fibroadenoma, ANDI (Aberrations of Normal Development & Involution)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Breast Surgery",
+    "microTopic": "Benign Breast Diseases - Breast Abscess & Duct Ectasia (Mammary Duct Fistula)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Breast Surgery",
+    "microTopic": "Breast Cancer Screening - Triple Assessment & BI-RADS Classification"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Breast Surgery",
+    "microTopic": "Breast Cancer Management - Modified Radical Mastectomy (MRM) vs Breast Conservation Surgery (BCS)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Breast Surgery",
+    "microTopic": "Breast Cancer Management - Sentinel Lymph Node Biopsy (SLNB) & Axillary Clearance"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Breast Surgery",
+    "microTopic": "Breast Cancer Adjuvants - Receptor Status (ER/PR/HER2), Tamoxifen & Trastuzumab"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Cardiothoracic Surgery",
+    "microTopic": "Chest Trauma - Tension Pneumothorax (Needle Decompression vs ICD)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Cardiothoracic Surgery",
+    "microTopic": "Chest Trauma - Flail Chest & Massive Hemothorax"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Cardiothoracic Surgery",
+    "microTopic": "Pleural Space - Empyema Thoracis & Decortication"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Cardiothoracic Surgery",
+    "microTopic": "Lung Neoplasms - Bronchogenic Carcinoma (Operability & Mediastinoscopy)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Vascular Surgery",
+    "microTopic": "Peripheral Arterial Disease (PAD) - Intermittent Claudication, ABPI & Buerger's Disease (TAO)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Vascular Surgery",
+    "microTopic": "Peripheral Arterial Disease (PAD) - Acute Limb Ischemia (Embolism) & Fogarty Embolectomy"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Vascular Surgery",
+    "microTopic": "Aneurysms - Abdominal Aortic Aneurysm (AAA) Rupture & EVAR"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Vascular Surgery",
+    "microTopic": "Venous Disorders - Varicose Veins (CEAP Classification & Trendelenburg Test)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Vascular Surgery",
+    "microTopic": "Venous Disorders - Endovenous Ablation (EVLA/RFA) vs Stripping"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Vascular Surgery",
+    "microTopic": "Venous Disorders - Deep Vein Thrombosis (DVT) & Pulmonary Embolism Prophylaxis"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Vascular Surgery",
+    "microTopic": "Lymphatics - Lymphedema (Primary vs Secondary) & Filariasis Overlap"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Upper GI",
+    "microTopic": "Esophagus - Achalasia Cardia (Heller Myotomy) & GERD (Fundoplication)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Upper GI",
+    "microTopic": "Esophagus - Esophageal Carcinoma (Squamous vs Adenocarcinoma)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Upper GI",
+    "microTopic": "Stomach & Duodenum - Peptic Ulcer Perforation (Graham Patch Repair)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Upper GI",
+    "microTopic": "Stomach & Duodenum - Gastric Outlet Obstruction (GOO) & Metabolic Alkalosis"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Upper GI",
+    "microTopic": "Stomach & Duodenum - Gastric Carcinoma (Billroth Reconstructions & Virchow's Node)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Lower GI",
+    "microTopic": "Small Intestine - Acute Intestinal Obstruction (Adhesions vs Volvulus)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Lower GI",
+    "microTopic": "Small Intestine - Mesenteric Ischemia & Intestinal Gangrene"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Lower GI",
+    "microTopic": "Appendix - Acute Appendicitis (Alvarado Score) & Laparoscopic Appendectomy"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Lower GI",
+    "microTopic": "Appendix - Appendicular Mass (Ochsner-Sherren Regimen) vs Abscess"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Lower GI",
+    "microTopic": "Colon - Colorectal Carcinoma (FAP/HNPCC Genetics & Resection Types)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Lower GI",
+    "microTopic": "Colon - Diverticular Disease & Complications"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Lower GI",
+    "microTopic": "Anorectum - Hemorrhoids (Grades & Rubber Band Ligation vs Hemorrhoidectomy)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Lower GI",
+    "microTopic": "Anorectum - Fissure-in-Ano (Lateral Internal Sphincterotomy)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Gastrointestinal Surgery - Lower GI",
+    "microTopic": "Anorectum - Fistula-in-Ano (Goodsall's Rule & VAAFT/LIFT procedures)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Hepatobiliary & Pancreatic Surgery",
+    "microTopic": "Liver - Liver Abscess (Pyogenic vs Amoebic) Aspiration Indications"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Hepatobiliary & Pancreatic Surgery",
+    "microTopic": "Liver - Hydatid Cyst Liver (PAIR Therapy & Surgery)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Hepatobiliary & Pancreatic Surgery",
+    "microTopic": "Liver - Hepatocellular Carcinoma (HCC) & Portal Hypertension Shunts"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Hepatobiliary & Pancreatic Surgery",
+    "microTopic": "Gallbladder & Biliary Tract - Cholelithiasis & Laparoscopic Cholecystectomy Complications"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Hepatobiliary & Pancreatic Surgery",
+    "microTopic": "Gallbladder & Biliary Tract - Choledocholithiasis (CBD Stones, MRCP vs ERCP)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Hepatobiliary & Pancreatic Surgery",
+    "microTopic": "Gallbladder & Biliary Tract - Carcinoma Gallbladder & Cholangiocarcinoma"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Hepatobiliary & Pancreatic Surgery",
+    "microTopic": "Pancreas - Acute Pancreatitis Complications (Pseudocyst & Necrosectomy)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Hepatobiliary & Pancreatic Surgery",
+    "microTopic": "Pancreas - Carcinoma Head of Pancreas & Whipple Procedure (Pancreaticoduodenectomy)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Abdominal Wall & Hernias",
+    "microTopic": "Inguinal Hernia - Direct vs Indirect Hernia Anatomy (Hesselbach's Triangle)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Abdominal Wall & Hernias",
+    "microTopic": "Inguinal Hernia - Strangulated Hernia & Lichtenstein Tension-Free Mesh Repair"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Abdominal Wall & Hernias",
+    "microTopic": "Ventral Hernias - Incisional, Umbilical, and Epigastric Hernia Mesh Repair"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Urology (Surgical)",
+    "microTopic": "Kidneys - Renal Cell Carcinoma (RCC) & Radical Nephrectomy"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Urology (Surgical)",
+    "microTopic": "Kidneys - Urolithiasis (Calcium Oxalate/Struvite, ESWL, PCNL, URS)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Urology (Surgical)",
+    "microTopic": "Urinary Bladder - Transitional Cell Carcinoma (TCC) & TURBT"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Urology (Surgical)",
+    "microTopic": "Prostate - Benign Prostatic Hyperplasia (BPH) & TURP Syndrome"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Urology (Surgical)",
+    "microTopic": "Prostate - Carcinoma Prostate (Gleason Score & PSA Monitoring)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Urology (Surgical)",
+    "microTopic": "Testis & Scrotum - Testicular Torsion vs Epididymo-orchitis"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Urology (Surgical)",
+    "microTopic": "Testis & Scrotum - Hydrocele, Varicocele & Undescended Testis (Cryptorchidism)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Urology (Surgical)",
+    "microTopic": "Testis & Scrotum - Testicular Tumors (Seminoma vs NSGCT & High Inguinal Orchiectomy)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Urology (Surgical)",
+    "microTopic": "Urethra - Urethral Strictures & Traumatic Urethral Rupture (Anterior vs Posterior)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Skin & Subcutaneous Tissue",
+    "microTopic": "Cysts & Sinuses - Sebaceous Cyst, Dermoid Cyst & Pilonidal Sinus"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Skin & Subcutaneous Tissue",
+    "microTopic": "Skin Malignancies - Malignant Melanoma (Breslow Thickness & Margins)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Skin & Subcutaneous Tissue",
+    "microTopic": "Skin Malignancies - Basal Cell Carcinoma (BCC) & Squamous Cell Carcinoma (SCC)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Neurosurgery (Basics)",
+    "microTopic": "Traumatic Brain Injury - Glasgow Coma Scale (GCS) & Intracranial Pressure (ICP) Management"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Neurosurgery (Basics)",
+    "microTopic": "Traumatic Brain Injury - Extradural Hematoma (EDH) vs Subdural Hematoma (SDH)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Plastic & Reconstructive Surgery",
+    "microTopic": "Grafts & Flaps - Split Thickness (SSG) vs Full Thickness Skin Grafts"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Plastic & Reconstructive Surgery",
+    "microTopic": "Congenital Anomalies - Cleft Lip & Cleft Palate (Rule of 10s)"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Transplantation",
+    "microTopic": "Solid Organ Transplant - Renal Transplant (Living vs Cadaveric) & Rejection Immunology"
+  },
+  {
+    "subject": "General Surgery",
+    "sectionGroup": "Transplantation",
+    "microTopic": "Solid Organ Transplant - Immunosuppressive Regimens (Calcineurin Inhibitors)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Basic Sciences in OBGYN",
+    "microTopic": "Pelvic Anatomy - Supports of the Uterus & Pelvic Floor Anatomy"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Basic Sciences in OBGYN",
+    "microTopic": "Embryology - M'fcllerian Duct Development & Anomalies (Bicornuate, Septate, Didelphys)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Fetal Medicine",
+    "microTopic": "Fetal Hydrops - Immune vs Non-Immune Hydrops Fetalis"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Fetal Medicine",
+    "microTopic": "Fetal Anomalies - Neural Tube Defects (NTD) Screening & Folic Acid Protocols"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Fetal Medicine",
+    "microTopic": "Teratology - Common Teratogens (Antiepileptics, Warfarin) & FDA Categories"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Basic ANC",
+    "microTopic": "Maternal Physiology - Physiological Changes in Pregnancy (Cardiovascular, Renal, Hematological)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Basic ANC",
+    "microTopic": "Placenta & Amniotic Fluid - Placental Functions & Anomalies (Succenturiate, Battledore, Circumvallate)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Basic ANC",
+    "microTopic": "Antenatal Care (ANC) - Routine ANC Visits, Iron/Calcium Prophylaxis & Tetanus Toxoid"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Basic ANC",
+    "microTopic": "Antenatal Screening - Aneuploidy Screening (Dual, Triple, Quadruple Markers, NIPT)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Basic ANC",
+    "microTopic": "Antenatal Screening - Fetal Ultrasound (NT Scan, Anomaly Scan, BPP)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - High-Risk Medical Disorders",
+    "microTopic": "Hypertensive Disorders - Gestational Hypertension & Pre-eclampsia Criteria (HELLP Syndrome)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - High-Risk Medical Disorders",
+    "microTopic": "Hypertensive Disorders - Eclampsia Management & MgSO4 Toxicity Protocol (Pritchard Regimen)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - High-Risk Medical Disorders",
+    "microTopic": "Diabetes in Pregnancy - Gestational Diabetes Mellitus (GDM) Screening (DIPSI) & Insulin Therapy"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - High-Risk Medical Disorders",
+    "microTopic": "Hematological Disorders - Anemias in Pregnancy (Iron Deficiency, Megaloblastic, Sickle Cell)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - High-Risk Medical Disorders",
+    "microTopic": "Coagulation Disorders - Antiphospholipid Antibody Syndrome (APLA) Management (Heparin/Aspirin)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - High-Risk Medical Disorders",
+    "microTopic": "Cardiac Disease - Rheumatic Heart Disease (Mitral Stenosis) & Peripartum Cardiomyopathy"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - High-Risk Medical Disorders",
+    "microTopic": "Hepatic Disorders - Intrahepatic Cholestasis of Pregnancy (ICP) & Acute Fatty Liver (AFLP)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - High-Risk Medical Disorders",
+    "microTopic": "Thyroid Disorders - Hypothyroidism & Hyperthyroidism Dosing Adjustments in Pregnancy"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - High-Risk Medical Disorders",
+    "microTopic": "Infections in Pregnancy - TORCH Infections & Vertical Transmission Risks"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - High-Risk Medical Disorders",
+    "microTopic": "Infections in Pregnancy - Hepatitis B, Syphilis & HIV in Pregnancy (PMTCT)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Early Pregnancy Complications",
+    "microTopic": "Abortion - Types of Abortion (Threatened, Inevitable, Missed, Septic)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Early Pregnancy Complications",
+    "microTopic": "Abortion - Medical Abortion Protocols (Mifepristone & Misoprostol)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Early Pregnancy Complications",
+    "microTopic": "Ectopic Pregnancy - Unruptured Ectopic & Medical Management (Methotrexate)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Early Pregnancy Complications",
+    "microTopic": "Ectopic Pregnancy - Ruptured Ectopic & Surgical Management (Salpingectomy/Salpingostomy)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Early Pregnancy Complications",
+    "microTopic": "Gestational Trophoblastic Disease - Hydatidiform Mole Diagnosis, Snowstorm USG & Suction Evacuation"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Late Pregnancy Complications",
+    "microTopic": "Antepartum Hemorrhage (APH) - Placenta Previa (Types, MRI for Accreta, Mode of Delivery)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Late Pregnancy Complications",
+    "microTopic": "Antepartum Hemorrhage (APH) - Abruptio Placentae (Couvelaire Uterus, DIC Complications)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Late Pregnancy Complications",
+    "microTopic": "Fetal Growth Disorders - Fetal Growth Restriction (FGR/IUGR) & Umbilical Artery Doppler"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Late Pregnancy Complications",
+    "microTopic": "Amniotic Fluid Disorders - Oligohydramnios vs Polyhydramnios Evaluation"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Late Pregnancy Complications",
+    "microTopic": "Rh Isoimmunization - Anti-D Prophylaxis, ICT & MCA Doppler Assessment for Fetal Anemia"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Late Pregnancy Complications",
+    "microTopic": "Preterm Labor - Tocolytics (Nifedipine, Atosiban) & Corticosteroid Therapy"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Late Pregnancy Complications",
+    "microTopic": "Post-term Pregnancy - Induction of Labor (Bishop Score, Cervical Ripening Agents)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Late Pregnancy Complications",
+    "microTopic": "Multiple Pregnancy - Twin Gestation (Chorionicity, TTTS, TRAP Sequence)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Labor Complications & Emergencies",
+    "microTopic": "Normal Labor - Mechanism of Normal Labor & Pelvic Assessment"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Labor Complications & Emergencies",
+    "microTopic": "Labor Monitoring - WHO Modified Partogram & Intrapartum CTG Decelerations"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Labor Complications & Emergencies",
+    "microTopic": "Abnormal Labor - Prolonged Labor, Obstructed Labor & Bandl's Ring"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Labor Complications & Emergencies",
+    "microTopic": "Malpresentations - Breech Presentation (Vaginal Delivery Criteria vs LSCS)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Labor Complications & Emergencies",
+    "microTopic": "Intrapartum Emergencies - Shoulder Dystocia (McRoberts Maneuver, Woods Corkscrew)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Labor Complications & Emergencies",
+    "microTopic": "Intrapartum Emergencies - Cord Prolapse & Vasa Previa Management"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Labor Complications & Emergencies",
+    "microTopic": "Intrapartum Emergencies - Uterine Rupture & Acute Uterine Inversion"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Labor Complications & Emergencies",
+    "microTopic": "Intrapartum Emergencies - Amniotic Fluid Embolism (AFE)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Operative",
+    "microTopic": "Operative Obstetrics - Indications & Steps of Cesarean Section (LSCS)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Operative",
+    "microTopic": "Operative Obstetrics - Instrumental Delivery (Forceps vs Vacuum Extraction Criteria)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Postpartum Complications",
+    "microTopic": "Postpartum Hemorrhage (PPH) - Primary PPH (Atonic Uterus) & Medical Uterotonics"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Postpartum Complications",
+    "microTopic": "Postpartum Hemorrhage (PPH) - Surgical Management of PPH (B-Lynch Suture, Uterine/Iliac Artery Ligation)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Postpartum Complications",
+    "microTopic": "Postpartum Hemorrhage (PPH) - Secondary PPH & Retained Placenta"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Obstetrics - Postpartum Complications",
+    "microTopic": "Puerperal Complications - Puerperal Pyrexia, Endomyometritis & Postpartum Depression"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Reproductive Endocrinology",
+    "microTopic": "Puberty - Precocious Puberty & Delayed Puberty Algorithms"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Reproductive Endocrinology",
+    "microTopic": "Menstrual Cycle - Normal Hormonal Axis, Ovulation & Luteal Phase"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Reproductive Endocrinology",
+    "microTopic": "Amenorrhea - Primary Amenorrhea (Mayer-Rokitansky-K'fcster-Hauser vs Turner's)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Reproductive Endocrinology",
+    "microTopic": "Amenorrhea - Secondary Amenorrhea (Asherman's, Sheehan's Syndrome, Premature Ovarian Failure)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Reproductive Endocrinology",
+    "microTopic": "Hyperandrogenism - Hirsutism, Adult-Onset CAH & Virilizing Ovarian Tumors"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Reproductive Endocrinology",
+    "microTopic": "Disorders of Sex Development - Androgen Insensitivity Syndrome (AIS) vs Swyer Syndrome"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Reproductive Endocrinology",
+    "microTopic": "Abnormal Uterine Bleeding - AUB Classification (PALM-COEIN Criteria)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Reproductive Endocrinology",
+    "microTopic": "PCOS - Polycystic Ovary Syndrome - Rotterdam Criteria, Letrozole & Metformin"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Reproductive Endocrinology",
+    "microTopic": "Menopause - Hormone Replacement Therapy (HRT) Indications, Regimens & Contraindications"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Infertility",
+    "microTopic": "Female Infertility - Ovulation Induction Agents (Clomiphene, Letrozole, Gonadotropins)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Infertility",
+    "microTopic": "Female Infertility - Tubal Patency Tests (HSG, Sonosalpingography, Laparoscopy)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Infertility",
+    "microTopic": "Male Infertility - Semen Analysis (Latest WHO Criteria), Azoospermia & Oligospermia"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Infertility",
+    "microTopic": "Assisted Reproductive Tech - IVF, ICSI Protocols & Ovarian Hyperstimulation Syndrome (OHSS)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Benign Lesions",
+    "microTopic": "Uterine Fibroids - Leiomyoma Presentation, Medical Management (Ulpristal/GnRH) & Myomectomy"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Benign Lesions",
+    "microTopic": "Uterine Fibroids - Red Degeneration in Pregnancy"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Benign Lesions",
+    "microTopic": "Endometriosis - Diagnosis (Chocolate Cyst), Medical Management (Dienogest, GnRH Agonists)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Benign Lesions",
+    "microTopic": "Endometriosis - Adenomyosis (Clinical Features, MRI & Hysterectomy)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Benign Lesions",
+    "microTopic": "Ovarian Cysts - Functional Cysts, Endometriomas & Benign Ovarian Neoplasms (Dermoid/Teratoma)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Infections",
+    "microTopic": "Vaginitis - Bacterial Vaginosis (Amsel Criteria), Trichomoniasis, Vulvovaginal Candidiasis"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Infections",
+    "microTopic": "Pelvic Inflammatory Disease - PID Clinical Criteria, Tubo-ovarian Abscess & Outpatient/Inpatient Antibiotics"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Infections",
+    "microTopic": "Genital Tuberculosis - Infertility Workup & Endometrial Biopsy Findings (Lead Pipe Appearance)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Infections",
+    "microTopic": "Sexually Transmitted Infections - Syndromic Management of STIs (NACO Guidelines for Ulcers/Discharge)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Urogynecology",
+    "microTopic": "Pelvic Organ Prolapse - Uterovaginal Prolapse Staging (POP-Q) & Ring Pessaries"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Urogynecology",
+    "microTopic": "Pelvic Organ Prolapse - Surgical Repairs (Ward Mayo, Sacrocolpopexy, Manchester Repair)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Urogynecology",
+    "microTopic": "Urinary Incontinence - Stress Incontinence (TVT/TOT Slings) vs Urge Incontinence (Anticholinergics)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Urogynecology",
+    "microTopic": "Genital Fistulas - Vesicovaginal Fistula (VVF) Diagnosis (Three Swab Test) & Repair"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Oncology",
+    "microTopic": "Cervical Cancer - HPV Vaccine (Bivalent, Quadrivalent, Nonavalent) & Screening Algorithms (VIA, Pap, HPV Co-testing)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Oncology",
+    "microTopic": "Cervical Cancer - CIN Management (Colposcopy, LLETZ/LEEP, Cryotherapy)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Oncology",
+    "microTopic": "Cervical Cancer - FIGO Staging & Treatment (Radical Hysterectomy vs Chemoradiation)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Oncology",
+    "microTopic": "Endometrial Neoplasia - Endometrial Hyperplasia (Atypia vs Non-Atypia) & Progestin Therapy"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Oncology",
+    "microTopic": "Endometrial Cancer - Postmenopausal Bleeding Evaluation, FIGO Staging & Surgical Staging"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Oncology",
+    "microTopic": "Ovarian Cancer - Tumor Markers (CA-125, AFP, hCG, LDH) & Risk of Malignancy Index (RMI)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Oncology",
+    "microTopic": "Ovarian Cancer - Epithelial vs Germ Cell Tumors & Cytoreductive Surgery"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Oncology",
+    "microTopic": "Vulvar & Vaginal Cancer - Vulvar Intraepithelial Neoplasia (VIN), Paget's Disease & Radical Vulvectomy"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Gynecology - Oncology",
+    "microTopic": "Gestational Trophoblastic Neoplasia - Choriocarcinoma, FIGO/WHO Scoring & Chemotherapy (EMA-CO Regimen)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Family Planning & Legal Issues",
+    "microTopic": "Temporary Contraception - Combined Oral Contraceptive Pills (COCP) - Mechanisms & Absolute Contraindications"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Family Planning & Legal Issues",
+    "microTopic": "Temporary Contraception - Non-Steroidal Pills (Centchroman/Saheli) & Progesterone Only Pills (POP)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Family Planning & Legal Issues",
+    "microTopic": "Temporary Contraception - Intrauterine Contraceptive Devices (Copper T 380A, Mirena/LNG-IUS) & Pearl Index"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Family Planning & Legal Issues",
+    "microTopic": "Temporary Contraception - Injectables (DMPA, NET-EN), Implants & Emergency Contraception (Levonorgestrel/Ulipristal)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Family Planning & Legal Issues",
+    "microTopic": "Permanent Contraception - Tubal Ligation (Pomeroy Technique) & Vasectomy"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Family Planning & Legal Issues",
+    "microTopic": "Legal Guidelines - Medical Termination of Pregnancy (MTP) Act Updates (2021 Amendments)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Family Planning & Legal Issues",
+    "microTopic": "Legal Guidelines - PCPNDT Act Guidelines & Registration"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Operative Gynecology",
+    "microTopic": "Endoscopic Surgery - Diagnostic & Operative Hysteroscopy (Indications & Distension Media Complications)"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Operative Gynecology",
+    "microTopic": "Endoscopic Surgery - Diagnostic Laparoscopy & Pneumoperitoneum Physiology"
+  },
+  {
+    "subject": "Obstetrics & Gynecology",
+    "sectionGroup": "Operative Gynecology",
+    "microTopic": "Hysterectomy - Non-Descent Vaginal Hysterectomy (NDVH) vs Total Laparoscopic Hysterectomy (TLH)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Concept of Health & Disease",
+    "microTopic": "Concepts of Causation - Epidemiological Triad & Web of Causation"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Concept of Health & Disease",
+    "microTopic": "Levels of Prevention - Primordial, Primary, Secondary, and Tertiary Prevention"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Concept of Health & Disease",
+    "microTopic": "Health Indicators - Mortality, Morbidity, and Disability Indicators (DALY/QALY)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Epidemiology",
+    "microTopic": "Descriptive Epidemiology - Time, Place, Person Distribution & Epidemic Curve Analysis"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Epidemiology",
+    "microTopic": "Analytical Epidemiology - Case-Control Studies & Odds Ratio (OR) Calculation"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Epidemiology",
+    "microTopic": "Analytical Epidemiology - Cohort Studies & Relative Risk (RR) / Attributable Risk"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Epidemiology",
+    "microTopic": "Experimental Epidemiology - Randomized Controlled Trials (RCTs) & Types of Blinding"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Epidemiology",
+    "microTopic": "Screening of Disease - Sensitivity, Specificity & Predictive Values (PPV/NPV)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Epidemiology",
+    "microTopic": "Screening of Disease - ROC Curve Analysis & Lead Time Bias"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Biostatistics",
+    "microTopic": "Data Presentation & Distribution - Normal Distribution Curve & Standard Deviation (SD)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Biostatistics",
+    "microTopic": "Measures of Central Tendency - Mean, Median, Mode & Skewed Distributions"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Biostatistics",
+    "microTopic": "Tests of Significance - Parametric Tests (Student's t-test, ANOVA)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Biostatistics",
+    "microTopic": "Tests of Significance - Non-Parametric Tests (Chi-Square Test)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Biostatistics",
+    "microTopic": "Correlation & Regression - Pearson vs Spearman Correlation Coefficients"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Biostatistics",
+    "microTopic": "Research Methodology - P-value, Alpha/Beta Errors & Power of a Study"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Respiratory Infections - Tuberculosis Epidemiology & NTEP (National TB Elimination Program) Guidelines"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Respiratory Infections - Measles, Rubella & Influenza Outbreak Management"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Intestinal Infections - Polio Eradication & Acute Flaccid Paralysis (AFP) Surveillance"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Intestinal Infections - Cholera, Typhoid & Diarrheal Disease Control (IDSP)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Vector-Borne Diseases - Malaria Epidemiology (API, SPR) & NVBDCP Guidelines"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Vector-Borne Diseases - Dengue & Chikungunya (Aedes Indices like Breteau Index)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Vector-Borne Diseases - Lymphatic Filariasis & Mass Drug Administration (MDA)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Zoonotic Diseases - Rabies Epidemiology, Categorization & PEP Guidelines"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Zoonotic Diseases - Leptospirosis, Brucellosis & KFD"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Chronic Infections - Leprosy Epidemiology & NLEP (MDT Regimens)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Communicable Disease Epidemiology",
+    "microTopic": "Chronic Infections - HIV/AIDS Epidemiology & NACP (Targeted Interventions)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Non-Communicable Diseases (NCDs)",
+    "microTopic": "NCD Epidemiology - Hypertension & Diabetes Screening (NPCDCS Program)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Non-Communicable Diseases (NCDs)",
+    "microTopic": "NCD Epidemiology - Cardiovascular Diseases & Rheumatic Heart Disease Prevention"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Non-Communicable Diseases (NCDs)",
+    "microTopic": "Cancer Epidemiology - Cervical, Breast & Oral Cancer Screening Guidelines"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Non-Communicable Diseases (NCDs)",
+    "microTopic": "Blindness Control - NPCB (National Program for Control of Blindness) & Cataract Surgical Rate"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Immunization & Cold Chain",
+    "microTopic": "National Immunization Schedule - Routine UIP Updates (BCG, OPV, Pentavalent, PCV, Rotavirus)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Immunization & Cold Chain",
+    "microTopic": "National Immunization Schedule - Mission Indradhanush & Catch-up Campaigns"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Immunization & Cold Chain",
+    "microTopic": "Cold Chain System - ILR (Ice Lined Refrigerator), Deep Freezers & Temperature Maintenance"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Immunization & Cold Chain",
+    "microTopic": "Cold Chain System - Vaccine Vial Monitor (VVM), Open Vial Policy & Shake Test"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Immunization & Cold Chain",
+    "microTopic": "Vaccine Safety - Adverse Events Following Immunization (AEFI) Surveillance"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Demography & Family Planning",
+    "microTopic": "Demographic Indicators - Population Pyramids, Demographic Cycle & Dependency Ratio"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Demography & Family Planning",
+    "microTopic": "Fertility Indicators - Total Fertility Rate (TFR), Gross/Net Reproduction Rates (GRR/NRR)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Demography & Family Planning",
+    "microTopic": "Family Planning Methods - Contraceptive Efficacy (Pearl Index) & Eligible Couple Survey"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Demography & Family Planning",
+    "microTopic": "Family Planning Methods - National Family Planning Indemnity Scheme & Post-Partum IUCD (PPIUCD)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Maternal & Child Health (MCH)",
+    "microTopic": "Maternal Health Indicators - Maternal Mortality Ratio (MMR) Causes & Calculation"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Maternal & Child Health (MCH)",
+    "microTopic": "Child Health Indicators - Infant Mortality Rate (IMR), Neonatal Mortality & Under-5 Mortality Rate"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Maternal & Child Health (MCH)",
+    "microTopic": "MCH Programs - RMNCH+A Strategy, Janani Suraksha Yojana (JSY) & JSSK"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Maternal & Child Health (MCH)",
+    "microTopic": "Child Health Programs - IMNCI (Integrated Management of Neonatal & Childhood Illness) Color Coding"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Nutrition & Health",
+    "microTopic": "Nutritional Assessment - Anthropometry & Nutritional Surveillance in Community"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Nutrition & Health",
+    "microTopic": "National Nutritional Programs - ICDS (Integrated Child Development Services) & Anganwadi Norms"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Nutrition & Health",
+    "microTopic": "National Nutritional Programs - PM POSHAN (Mid-Day Meal Scheme) Calorific Norms"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Nutrition & Health",
+    "microTopic": "National Nutritional Programs - National Iron Plus Initiative (NIPI) & Vitamin A Prophylaxis Dosing"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Nutrition & Health",
+    "microTopic": "National Nutritional Programs - National Iodine Deficiency Disorders Control Program (NIDDCP)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Environment & Occupational Health",
+    "microTopic": "Water & Sanitation - Methods of Water Purification (Chlorination, Horrocks' Apparatus)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Environment & Occupational Health",
+    "microTopic": "Water & Sanitation - Water Quality Standards (Coliform Count) & Hardness of Water"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Environment & Occupational Health",
+    "microTopic": "Waste Management - Biomedical Waste Management (BMWM) Latest Color Coding & Disposal"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Environment & Occupational Health",
+    "microTopic": "Waste Management - Solid Waste Management (Sanitary Landfills, Composting)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Environment & Occupational Health",
+    "microTopic": "Occupational Health - Pneumoconioses (Silicosis, Asbestosis, Byssinosis) & Prevention"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Environment & Occupational Health",
+    "microTopic": "Occupational Health - Lead Poisoning (Plumbism) & Occupational Cancers"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Environment & Occupational Health",
+    "microTopic": "Occupational Legislation - Factories Act & Employees' State Insurance (ESI) Act Benefits"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Environment & Occupational Health",
+    "microTopic": "Entomology - Mosquito Control Measures & Insecticides (DDT, Malathion)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Health Administration & Planning",
+    "microTopic": "Healthcare Delivery System - Sub-Center, PHC, and CHC (Population Norms & Staffing Patterns)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Health Administration & Planning",
+    "microTopic": "Healthcare Delivery System - ASHA, Anganwadi Worker, and Health Worker Roles & Ratios"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Health Administration & Planning",
+    "microTopic": "Health Planning Techniques - Cost-Benefit vs Cost-Effective Analysis"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "Health Administration & Planning",
+    "microTopic": "Health Planning Techniques - Network Analysis (PERT & CPM)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "International Health",
+    "microTopic": "Health Agencies - WHO, UNICEF, ILO, and FAO (Functions & Headquarters)"
+  },
+  {
+    "subject": "Preventive & Social Medicine",
+    "sectionGroup": "International Health",
+    "microTopic": "International Regulations - International Health Regulations (IHR) & Quarantine Rules"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Growth & Development",
+    "microTopic": "Normal Growth - Anthropometry & Growth Charts (WHO vs IAP)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Growth & Development",
+    "microTopic": "Normal Growth - Developmental Milestones (Motor, Social, Language, Fine Motor)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Growth & Development",
+    "microTopic": "Disorders of Growth - Failure to Thrive (FTT) & Short Stature Evaluation"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Growth & Development",
+    "microTopic": "Disorders of Development - Developmental Delay & Autism Spectrum Disorder (ASD)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nutrition",
+    "microTopic": "Infant Feeding - Breastfeeding Guidelines & Contraindications"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nutrition",
+    "microTopic": "Infant Feeding - Complementary Feeding & Weaning"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nutrition",
+    "microTopic": "Malnutrition - Severe Acute Malnutrition (SAM) & WHO Management Steps"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nutrition",
+    "microTopic": "Malnutrition - Refeeding Syndrome Complications"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nutrition",
+    "microTopic": "Vitamin Deficiencies - Vitamin A Deficiency & Xerophthalmia Management"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nutrition",
+    "microTopic": "Vitamin Deficiencies - Vitamin D Deficiency (Nutritional Rickets) & Prophylaxis"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nutrition",
+    "microTopic": "Vitamin Deficiencies - Vitamin C (Scurvy) & B-Complex Deficiencies"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nutrition",
+    "microTopic": "Trace Elements - Zinc Deficiencies & Pediatric Supplementation"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Delivery Room Management - Neonatal Resuscitation Program (NRP) Algorithms"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Prematurity - Low Birth Weight (LBW) & Kangaroo Mother Care (KMC)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Respiratory Disorders - Respiratory Distress Syndrome (RDS / HMD) & Surfactant"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Respiratory Disorders - Meconium Aspiration Syndrome (MAS) & PPHN"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Neonatal Jaundice - Physiological vs Pathological Hyperbilirubinemia"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Neonatal Jaundice - Kernicterus, Phototherapy & Exchange Transfusion Protocols"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Neonatal Infections - Early vs Late-Onset Neonatal Sepsis & Empiric Antibiotics"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Neonatal Infections - Congenital TORCH Infections (Syphilis, Rubella, CMV, Toxo)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Neonatal Neurology - Hypoxic Ischemic Encephalopathy (HIE) & Therapeutic Hypothermia"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Neonatal Neurology - Neonatal Seizures & Metabolic Causes (Hypocalcemia)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Neonatal Hematology - Hemorrhagic Disease of the Newborn (HDN) & Vitamin K"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Metabolic Disorders - Neonatal Hypoglycemia & Infant of Diabetic Mother (IDM)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neonatology",
+    "microTopic": "Gastrointestinal Emergencies - Necrotizing Enterocolitis (NEC) - Bell's Staging"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Genetics & Metabolism",
+    "microTopic": "Chromosomal Anomalies - Down Syndrome (Trisomy 21) Associated Anomalies"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Genetics & Metabolism",
+    "microTopic": "Chromosomal Anomalies - Turner Syndrome & Klinefelter Syndrome"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Genetics & Metabolism",
+    "microTopic": "Inborn Errors of Metabolism (IEM) - Phenylketonuria (PKU) & Galactosemia"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Genetics & Metabolism",
+    "microTopic": "Inborn Errors of Metabolism (IEM) - Glycogen Storage Diseases (Von Gierke, Pompe)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Genetics & Syndromes",
+    "microTopic": "Microdeletion Syndromes - DiGeorge Syndrome (CATCH-22)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Genetics & Syndromes",
+    "microTopic": "Imprinting Disorders - Prader-Willi & Angelman Syndromes"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Viral Exanthems - Measles (Rubeola) & Complications (SSPE)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Viral Exanthems - Rubella & Congenital Rubella Syndrome (CRS)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Viral Exanthems - Varicella (Chickenpox), Erythema Infectiosum, Roseola"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Viral Exanthems - Mumps & Complications (Orchitis, Meningitis)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Viral Illnesses - Hand, Foot, and Mouth Disease (HFMD)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Bacterial Infections - Diphtheria Management & Antitoxin"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Bacterial Infections - Pertussis (Whooping Cough) & Macrolide Therapy"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Pediatric Tuberculosis - Primary Complex & Pediatric ATT Dosing"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Pediatric Tuberculosis - TB Meningitis in Children"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Pediatric HIV - Prevention of Parent-to-Child Transmission (PPTCT)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Pediatric HIV - Pediatric ART Regimens & PCP Prophylaxis"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Parasitic Infections - Soil-Transmitted Helminths & National Deworming Protocol"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Vector-Borne - Pediatric Malaria & Dengue Fluid Management"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Infections",
+    "microTopic": "Polio & Surveillance - Acute Flaccid Paralysis (AFP) Surveillance Protocols"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Immunization & Preventive Pediatrics",
+    "microTopic": "National Immunization Schedule (NIS) - Routine Universal Immunization Program (UIP) Updates"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Immunization & Preventive Pediatrics",
+    "microTopic": "Vaccines - Catch-up Immunization Protocols"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Immunization & Preventive Pediatrics",
+    "microTopic": "Vaccines - Adverse Events Following Immunization (AEFI)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Immunization & Preventive Pediatrics",
+    "microTopic": "Preventive Guidelines - IMNCI Guidelines (Integrated Management of Neonatal and Childhood Illness)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Upper Airway Infections - Acute Laryngotracheobronchitis (Croup) vs Epiglottitis"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Lower Airway Infections - Acute Bronchiolitis (RSV) Management"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Lower Airway Infections - Pediatric Pneumonia & WHO ARI Guidelines"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Chronic Respiratory - Pediatric Asthma Management & Inhaler Techniques"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Respiratory System",
+    "microTopic": "Chronic Respiratory - Cystic Fibrosis Diagnostics & Sweat Chloride Test"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Acyanotic Congenital Heart Disease - Ventricular Septal Defect (VSD) & Atrial Septal Defect (ASD)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Acyanotic Congenital Heart Disease - Patent Ductus Arteriosus (PDA) Medical Closure"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Cyanotic Congenital Heart Disease - Tetralogy of Fallot (TOF) & Cyanotic Spells (Tet Spells)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Cyanotic Congenital Heart Disease - Transposition of Great Arteries (TGA) & Prostaglandin E1"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Acquired Heart Disease - Rheumatic Fever (Jones Criteria) & Secondary Prophylaxis"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Cardiology",
+    "microTopic": "Acquired Heart Disease - Kawasaki Disease & Coronary Aneurysm Prevention (IVIG/Aspirin)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Gastroenterology & Hepatology",
+    "microTopic": "Diarrheal Diseases - Acute Gastroenteritis (AGE) & Dehydration Assessment"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Gastroenterology & Hepatology",
+    "microTopic": "Diarrheal Diseases - ORS Protocols (Plan A, B, C) & Zinc Supplementation"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Gastroenterology & Hepatology",
+    "microTopic": "Hepatic Disorders - Neonatal Hepatitis vs Extrahepatic Biliary Atresia"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Gastroenterology & Hepatology",
+    "microTopic": "Hepatic Disorders - Wilson's Disease & Copper Metabolism in Children"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Gastroenterology & Hepatology",
+    "microTopic": "Structural GI Disorders - Intussusception (Red Currant Jelly Stools & USG)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Gastroenterology & Hepatology",
+    "microTopic": "Structural GI Disorders - Hirschsprung Disease (Congenital Aganglionic Megacolon)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Surgery Basics",
+    "microTopic": "Congenital GI Anomalies - Tracheoesophageal Fistula (TEF) Types"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Surgery Basics",
+    "microTopic": "Congenital GI Anomalies - Hypertrophic Pyloric Stenosis (HPS) Diagnosis"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Glomerular Diseases - Nephrotic Syndrome (Minimal Change Disease) & Steroid Regimens"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Glomerular Diseases - Post-Streptococcal Glomerulonephritis (PSGN) in Children"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Renal Syndromes - Hemolytic Uremic Syndrome (HUS) & Triad Presentation"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Nephrology",
+    "microTopic": "Congenital/Structural - Vesicoureteral Reflux (VUR) & Pediatric UTI Algorithms"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Hematology & Oncology",
+    "microTopic": "Nutritional Anemias - Iron Deficiency Anemia in Infants & Iron Prophylaxis"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Hematology & Oncology",
+    "microTopic": "Hemolytic Anemias - Thalassemia Major & Chronic Transfusion Protocols"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Hematology & Oncology",
+    "microTopic": "Pediatric Oncology - Acute Lymphoblastic Leukemia (ALL) Diagnostics"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Hematology & Oncology",
+    "microTopic": "Pediatric Solid Tumors - Wilms Tumor (Nephroblastoma) vs Neuroblastoma"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Rheumatology",
+    "microTopic": "Arthritis - Juvenile Idiopathic Arthritis (JIA) Classification & Management"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Rheumatology",
+    "microTopic": "Vasculitis - Henoch-Sch'f6nlein Purpura (IgA Vasculitis)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neurology",
+    "microTopic": "Paroxysmal Disorders - Simple vs Complex Febrile Seizures & Prophylaxis"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neurology",
+    "microTopic": "Neurodevelopmental - Cerebral Palsy (Spastic, Dyskinetic, Ataxic types)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neurology",
+    "microTopic": "Neurostructural - Neural Tube Defects (Spina Bifida) & Hydrocephalus"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neurology",
+    "microTopic": "Neuromuscular - Duchenne Muscular Dystrophy (DMD) & Gowers' Sign"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Neurology",
+    "microTopic": "Neuroinfections - Pediatric Bacterial Meningitis & CSF Analysis"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Behavioral & Psychiatric Disorders",
+    "microTopic": "Behavioral Disorders - Attention Deficit Hyperactivity Disorder (ADHD)"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Behavioral & Psychiatric Disorders",
+    "microTopic": "Elimination Disorders - Nocturnal Enuresis Management"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Thyroid Disorders - Congenital Hypothyroidism & Newborn Screening"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Adrenal Disorders - Congenital Adrenal Hyperplasia (CAH) & Salt-Wasting Crises"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Endocrinology",
+    "microTopic": "Pubertal Disorders - Precocious Puberty & Delayed Puberty Evaluation"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Emergencies & Toxicology",
+    "microTopic": "Toxicology - Hydrocarbon (Kerosene) Poisoning Management"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Emergencies & Toxicology",
+    "microTopic": "Toxicology - Lead Poisoning & Chelation Therapy"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Emergencies & Toxicology",
+    "microTopic": "Child Protection - Child Abuse (Non-Accidental Injury) Recognition"
+  },
+  {
+    "subject": "Pediatrics",
+    "sectionGroup": "Pediatric Emergencies & Toxicology",
+    "microTopic": "Resuscitation - Pediatric Advanced Life Support (PALS) Guidelines"
   }
 ]

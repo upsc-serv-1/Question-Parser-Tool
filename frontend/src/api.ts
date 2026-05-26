@@ -19,7 +19,7 @@ async function jsonFetch<T = any>(path: string, init?: RequestInit): Promise<T> 
 export const api = {
   base: BASE,
   health: () => jsonFetch("/api/"),
-  taxonomy: () => jsonFetch<{ entries: Array<{ subject: string; sectionGroup: string; microTopic: string }> }>("/api/taxonomy"),
+  taxonomy: (category?: string) => jsonFetch<{ entries: Array<{ subject: string; sectionGroup: string; microTopic: string }> }>(`/api/taxonomy${category ? `?category=${category}` : ""}`),
   filenameHints: (filename: string) => jsonFetch<any>(`/api/filename-hints?filename=${encodeURIComponent(filename)}`),
   listJobs: () => jsonFetch<{ items: any[] }>("/api/jobs"),
   getJob: (id: string) => jsonFetch<{ job: any; questions: any[]; batches: any[] }>(`/api/jobs/${id}`),

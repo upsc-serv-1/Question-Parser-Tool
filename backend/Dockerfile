@@ -7,6 +7,7 @@ WORKDIR /app
 # Install system dependencies often needed for parsers/parsing tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    tesseract-ocr \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy only the requirements first to leverage Docker cache

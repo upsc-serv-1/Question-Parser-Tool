@@ -122,11 +122,12 @@ function PreviewTab({ jobId, job, onAfter, columns, setColumns, useOcr, setUseOc
   const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
 
   useEffect(() => {
-    api.taxonomy().then((r) => {
+    const category = job?.metadata?.exam_frame?.exam_category;
+    api.taxonomy(category).then((r) => {
       const unique = Array.from(new Set((r.entries || []).map(e => e.subject))).filter(Boolean).sort();
       setAllSubjects(unique);
     }).catch(console.error);
-  }, []);
+  }, [job?.metadata?.exam_frame?.exam_category]);
 
   const runPreview = async () => {
     setRunning(true);
@@ -263,25 +264,34 @@ function PreviewTab({ jobId, job, onAfter, columns, setColumns, useOcr, setUseOc
           <View style={{ marginTop: 12 }}>
             <Text style={[S.label, { marginBottom: 8 }]}>Subject Scope Filter (Optional)</Text>
             <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
-              {allSubjects.map(sub => {
-                const isSel = selectedSubjects.includes(sub);
-                return (
-                  <Pressable
-                    key={sub}
-                    onPress={() => {
-                      setSelectedSubjects(prev => 
-                        prev.includes(sub) ? prev.filter(p => p !== sub) : [...prev, sub]
-                      );
-                    }}
-                    style={[
-                      { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, borderWidth: 1, borderColor: T.border },
-                      isSel && { backgroundColor: T.primary, borderColor: T.primary }
-                    ]}
-                  >
-                    <Text style={[S.pSm, { fontSize: 12 }, isSel && { color: "#fff", fontWeight: "600" }]}>{sub}</Text>
-                  </Pressable>
-                );
-              })}
+              {(() => {
+                const category = job?.metadata?.exam_frame?.exam_category;
+                const isCms = category === "upsc_cms";
+                const MEDICAL_SUBJECTS = ["General Medicine", "General Surgery", "Obstetrics & Gynecology", "Preventive & Social Medicine", "Pediatrics"];
+                const displayedSubjects = allSubjects.filter(sub => {
+                  const isMed = MEDICAL_SUBJECTS.includes(sub);
+                  return isCms ? isMed : !isMed;
+                });
+                return displayedSubjects.map(sub => {
+                  const isSel = selectedSubjects.includes(sub);
+                  return (
+                    <Pressable
+                      key={sub}
+                      onPress={() => {
+                        setSelectedSubjects(prev => 
+                          prev.includes(sub) ? prev.filter(p => p !== sub) : [...prev, sub]
+                        );
+                      }}
+                      style={[
+                        { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 20, borderWidth: 1, borderColor: T.border },
+                        isSel && { backgroundColor: T.primary, borderColor: T.primary }
+                      ]}
+                    >
+                      <Text style={[S.pSm, { fontSize: 12 }, isSel && { color: "#fff", fontWeight: "600" }]}>{sub}</Text>
+                    </Pressable>
+                  );
+                });
+              })()}
             </View>
             <Text style={[S.pSm, { fontSize: 11, color: T.textDim, marginTop: 4 }]}>
               Leave empty to extract all detected subjects.
