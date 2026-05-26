@@ -543,15 +543,16 @@ async def parse_output_endpoint(job_id: str, body: ParseOutputRequest):
         
         # If this is a key-only update, we only patch the correct_answer field
         if q.get("is_key_update_only"):
-            if existing:
-                await db.jt_questions.update_one(
-                    {"job_id": job_id, "question_number": n},
-                    {"$set": {
-                        "correct_answer": q.get("correct_answer"),
-                        "updated_at": now_iso()
-                    }}
-                )
-                saved += 1
+            await db.jt_questions.update_one(
+                {"job_id": job_id, "question_number": n},
+                {"$set": {
+                    "id": existing["id"] if existing else str(uuid.uuid4()),
+                    "correct_answer": q.get("correct_answer"),
+                    "updated_at": now_iso()
+                }},
+                upsert=True
+            )
+            saved += 1
             continue
 
         pyq_source = q.get("pyq_source") or ""

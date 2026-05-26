@@ -6,6 +6,7 @@ from typing import List, Dict, Tuple, Optional
 
 # Match the question header
 Q_HEADER_RE = re.compile(r"^===\s*QUESTION\s+(\d+)\s*===\s*$", re.MULTILINE)
+KEY_SHEET_RE = re.compile(r"^===\s*KEY\s*SHEET\s*===\s*$", re.MULTILINE | re.IGNORECASE)
 MARKER_RE = re.compile(r"^\[([A-Za-z]+):\s*(.*?)\]\s*$", re.MULTILINE)
 SECTION_RE = re.compile(
     r"^---\s*(STATEMENT LINES|OPTIONS|CORRECT ANSWER|EXPLANATION)\s*---\s*$",
@@ -67,6 +68,24 @@ def parse_options(text: str) -> Dict[str, str]:
 
 def parse_output(text: str) -> Dict:
     """Parse full Gemini output text. Returns {questions: [...], errors: [...], skipped: [...]}."""
+    # Check if this is a raw key sheet block instead of standard questions
+    # E.g. "=== KEY SHEET ===\n1: A\n2: B\n..."
+    if "=== KEY SHEET ===" in text or "=== KEYSHEET ===" in text:
+        keys = {}
+        # Match all occurrences of (Number: Letter) or (Number: X) or (Number Letter) inline or on newlines
+        matches = re.findall(r'\b(\d{1,3})\b\s*[:\-\s\.]+\s*\b([A-Da-dXx])\b', text)
+        for num_str, ans in matches:
+            keys[int(num_str)] = ans.lower()
+        if keys:
+            questions = []
+            for num, ans in sorted(keys.items()):
+                questions.append({
+                    "number": num,
+                    "correct_answer": ans,
+                    "is_key_update_only": True  # Flag to indicate this is a partial key update
+                })
+            return {"questions": questions, "errors": [], "skipped": []}
+
     questions = []
     errors = []
     skipped = []

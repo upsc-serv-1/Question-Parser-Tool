@@ -165,6 +165,76 @@ function PreviewTab({ jobId, job, onAfter, columns, setColumns, useOcr, setUseOc
 
   return (
     <View style={{ gap: 16 }}>
+      {/* 🔑 Tabular Answer Key Quick Loader & Prompt - ALWAYS visible at the very start */}
+      <View style={[S.card, { borderColor: T.primary, borderWidth: 1 }]}>
+        <Text style={[S.h3, { color: T.primary }]}>🔑 Tabular Answer Key Quick Extraction Prompt</Text>
+        <Text style={[S.pSm, { marginVertical: 6 }]}>
+          If you have a separate answer key sheet (or SOL PDF), paste it into Gemini along with this prompt to extract the keys:
+        </Text>
+        <TextInput
+          value={`You are an expert OCR system. 
+Look at the attached answer key sheet (PDF/Image). 
+Extract the answers strictly for SERIES A (found on Page 1).
+
+Output the result EXACTLY in this format (one question per line):
+
+=== KEY SHEET ===
+1: C
+2: C
+3: D
+4: B
+...
+Do not add any other notes, markdown formatting, or code fences. Just print the block above.`}
+          multiline
+          editable={false}
+          style={[S.input, { fontFamily: "monospace", fontSize: 11, minHeight: 120, backgroundColor: T.surfaceAlt, marginBottom: 8 }]}
+        />
+        <Pressable
+          onPress={async () => {
+            const promptText = `You are an expert OCR system. \nLook at the attached answer key sheet (PDF/Image). \nExtract the answers strictly for SERIES A (found on Page 1).\n\nOutput the result EXACTLY in this format (one question per line):\n\n=== KEY SHEET ===\n1: C\n2: C\n3: D\n4: B\n...\nDo not add any other notes, markdown formatting, or code fences. Just print the block above.`;
+            if (Platform.OS === "web" && (navigator as any)?.clipboard) {
+              await (navigator as any).clipboard.writeText(promptText);
+              alert("Key Sheet extraction prompt copied! Paste it in Gemini along with your answer key sheet.");
+            }
+          }}
+          style={[S.buttonGhost, { alignSelf: "flex-start", paddingVertical: 6, paddingHorizontal: 12, marginBottom: 12 }]}
+        >
+          <Text style={S.buttonGhostText}>📋 Copy Key Sheet Prompt</Text>
+        </Pressable>
+
+        <Text style={[S.pSm, { fontWeight: "bold", marginBottom: 6 }]}>Paste Gemini's output here to load keys:</Text>
+        <TextInput
+          value={extra}
+          onChangeText={setExtra}
+          placeholder="Paste === KEY SHEET === block here..."
+          placeholderTextColor={T.textDim}
+          multiline
+          style={[S.input, { fontFamily: "monospace", minHeight: 80, backgroundColor: T.surfaceAlt }]}
+        />
+        <Pressable
+          onPress={async () => {
+            if (!extra.trim()) {
+              alert("Please paste the Gemini key sheet output first!");
+              return;
+            }
+            setGenRunning(true);
+            try {
+              const r = await api.parseOutput(jobId, { output_text: extra });
+              alert(`Successfully loaded ${r.saved} answer keys directly into database! You can now proceed to Run Extraction below.`);
+              setExtra("");
+              onAfter();
+            } catch (e: any) {
+              alert("Error parsing keys: " + e.message);
+            } finally {
+              setGenRunning(false);
+            }
+          }}
+          style={[S.button, { marginTop: 10, alignSelf: "flex-start" }]}
+        >
+          <Text style={S.buttonText}>Load Answer Keys</Text>
+        </Pressable>
+      </View>
+
       <View style={S.card}>
         <Text style={S.h2}>Step 1 · Extract & Sanity Check</Text>
         <Text style={[S.pSm, { marginTop: 4, marginBottom: 12 }]}>
@@ -229,44 +299,6 @@ function PreviewTab({ jobId, job, onAfter, columns, setColumns, useOcr, setUseOc
               <Text style={[S.pSm, { marginTop: 6 }]}>QP range: {data.qp_numbers[0]} – {data.qp_numbers[data.qp_numbers.length - 1]}</Text>
             ) : null}
 
-            {data.sol_pages > 0 && (
-              <View style={[S.cardAlt, { marginTop: 16, borderColor: T.primary, borderWidth: 1 }]}>
-                <Text style={[S.h3, { color: T.primary }]}>🔑 Tabular Answer Key Quick Extraction Prompt</Text>
-                <Text style={[S.pSm, { marginVertical: 6 }]}>
-                  Since your solution PDF is a grid table/answer key sheet, paste it into Gemini along with this prompt to extract keys accurately:
-                </Text>
-                <TextInput
-                  value={`You are an expert OCR system. 
-Look at the attached answer key sheet (PDF/Image). 
-Extract the answers for all ${data.total_qp || 120} questions strictly for SERIES A (found on Page 1).
-
-Output the result EXACTLY in this format:
-
-=== KEY SHEET ===
-1: C
-2: C
-3: D
-4: B
-...
-Do not add any other notes, markdown formatting, or code fences. Just print the block above.`}
-                  multiline
-                  editable={false}
-                  style={[S.input, { fontFamily: "monospace", fontSize: 11, minHeight: 120, backgroundColor: T.surfaceAlt }]}
-                />
-                <Pressable
-                  onPress={async () => {
-                    const promptText = `You are an expert OCR system. \nLook at the attached answer key sheet (PDF/Image). \nExtract the answers for all ${data.total_qp || 120} questions strictly for SERIES A (found on Page 1).\n\nOutput the result EXACTLY in this format:\n\n=== KEY SHEET ===\n1: C\n2: C\n3: D\n4: B\n...\nDo not add any other notes, markdown formatting, or code fences. Just print the block above.`;
-                    if (Platform.OS === "web" && (navigator as any)?.clipboard) {
-                      await (navigator as any).clipboard.writeText(promptText);
-                      alert("Key Sheet extraction prompt copied! Paste it in Gemini with your sol.pdf.");
-                    }
-                  }}
-                  style={[S.button, { marginTop: 8, alignSelf: "flex-start", paddingVertical: 6, paddingHorizontal: 12 }]}
-                >
-                  <Text style={S.buttonText}>Copy Key Sheet Prompt</Text>
-                </Pressable>
-              </View>
-            )}
           </View>
         </View>
       ) : null}

@@ -158,7 +158,11 @@ def build_batch_prompt(
         n = it["number"]
         qp = (it.get("qp_text") or "").strip()
         sol = (it.get("sol_text") or "").strip()
+        correct_ans = (it.get("correct_answer") or "").strip()
+        
         block = f"--- RAW QUESTION {n} (FROM QP) ---\n{qp}"
+        if correct_ans:
+            block += f"\nOFFICIAL CORRECT ANSWER KEY: {correct_ans.upper()}"
         if sol:
             block += f"\n\n--- RAW SOLUTION {n} (FROM SOL) ---\n{sol}"
         q_blocks.append(block)
