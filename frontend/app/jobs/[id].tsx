@@ -1208,9 +1208,6 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
   const [programId, setProgramId] = useState(job.metadata?.program_id || "");
   const [programName, setProgramName] = useState(job.metadata?.program_name || "");
   const [defaultMinutes, setDefaultMinutes] = useState(String(job.metadata?.defaultMinutes || ""));
-  const [sourceMode, setSourceMode] = useState(job.metadata?.sourceMode || "docx-inline");
-  const [instituteId, setInstituteId] = useState(job.metadata?.institute_id || "");
-  const [instituteName, setInstituteName] = useState(job.metadata?.institute_name || "");
   const [saving, setSaving] = useState(false);
 
   // Sync state with job changes
@@ -1227,9 +1224,6 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
     setProgramId(job.metadata?.program_id || "");
     setProgramName(job.metadata?.program_name || "");
     setDefaultMinutes(String(job.metadata?.defaultMinutes || ""));
-    setSourceMode(job.metadata?.sourceMode || "docx-inline");
-    setInstituteId(job.metadata?.institute_id || "");
-    setInstituteName(job.metadata?.institute_name || "");
   }, [job]);
 
   const saveMetadata = async () => {
@@ -1245,9 +1239,6 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
         program_id: programId,
         program_name: programName,
         defaultMinutes: parseInt(defaultMinutes, 10) || null,
-        sourceMode: sourceMode,
-        institute_id: instituteId,
-        institute_name: instituteName,
         exam_frame: {
           exam_category: category,
           stage: stage,
@@ -1320,21 +1311,6 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
             <View style={{ flex: 1 }}>
               <Text style={[S.label, { marginBottom: 4 }]}>Test Duration (Mins)</Text>
               <TextInput value={defaultMinutes} onChangeText={setDefaultMinutes} keyboardType="number-pad" style={S.input} placeholder="e.g. 120" />
-            </View>
-          </View>
-
-          <View style={[S.rowGap, { gap: 10, marginTop: 4 }]}>
-            <View style={{ flex: 1 }}>
-              <Text style={[S.label, { marginBottom: 4 }]}>Institute ID</Text>
-              <TextInput value={instituteId} onChangeText={setInstituteId} style={S.input} placeholder="e.g. vision" />
-            </View>
-            <View style={{ flex: 1.5 }}>
-              <Text style={[S.label, { marginBottom: 4 }]}>Institute Name</Text>
-              <TextInput value={instituteName} onChangeText={setInstituteName} style={S.input} placeholder="e.g. Vision IAS" />
-            </View>
-            <View style={{ flex: 1 }}>
-              <Text style={[S.label, { marginBottom: 4 }]}>Source Mode</Text>
-              <TextInput value={sourceMode} onChangeText={setSourceMode} style={S.input} placeholder="docx-inline / docx-table" />
             </View>
           </View>
 
