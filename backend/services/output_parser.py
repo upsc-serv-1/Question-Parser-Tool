@@ -160,6 +160,10 @@ def validate_against_taxonomy(questions: List[Dict], taxonomy: List[Dict]) -> Li
     valid_set = {(t["subject"], t["sectionGroup"], t["microTopic"]) for t in taxonomy}
     valid_micros = {t["microTopic"] for t in taxonomy}
     for q in questions:
+        if q.get("is_key_update_only"):
+            q["microtopic_valid"] = False
+            q["microtopic_known"] = False
+            continue
         triple = (q.get("subject"), q.get("section_group"), q.get("microtopic"))
         q["microtopic_valid"] = triple in valid_set
         q["microtopic_known"] = q.get("microtopic") in valid_micros

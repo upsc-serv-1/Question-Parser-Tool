@@ -77,9 +77,74 @@ export default function JobDetail() {
             <Text style={S.badgeText}>{job.status}</Text>
           </View>
         </View>
-        <Text style={[S.pSm, { marginBottom: 24 }]}>
-          ID: {job.metadata?.id} · {job.metadata?.institute || "—"} · {questions.length} parsed Qs / {job.total_questions} total
-        </Text>
+        
+        {/* Collapsible Metadata Editor */}
+        {(() => {
+          const [editing, setEditing] = useState(false);
+          const [title, setTitle] = useState(job.title || "");
+          const [institute, setInstitute] = useState(job.metadata?.institute || "");
+          const [year, setYear] = useState(String(job.metadata?.launch_year || ""));
+          const [saving, setSaving] = useState(false);
+
+          const saveMetadata = async () => {
+            setSaving(true);
+            try {
+              await api.updateJobMetadata(id!, {
+                title: title,
+                institute: institute,
+                launch_year: parseInt(year, 10) || null,
+              });
+              setEditing(false);
+              refresh();
+            } catch (e: any) {
+              alert("Error updating metadata: " + e.message);
+            } finally {
+              setSaving(false);
+            }
+          };
+
+          return (
+            <View style={{ marginBottom: 24 }}>
+              {!editing ? (
+                <View style={[S.row, { gap: 8 }]}>
+                  <Text style={S.pSm}>
+                    ID: {job.metadata?.id} · {job.metadata?.institute || "—"} ({job.metadata?.launch_year || "—"}) · {questions.length} parsed Qs / {job.total_questions} total
+                  </Text>
+                  <Pressable onPress={() => setEditing(true)} style={{ paddingHorizontal: 6, paddingVertical: 2 }}>
+                    <Text style={{ color: T.accent, fontSize: 12, fontWeight: "bold" }}>⚙ Edit Metadata</Text>
+                  </Pressable>
+                </View>
+              ) : (
+                <View style={[S.cardAlt, { gap: 10, marginTop: 8 }]}>
+                  <Text style={[S.h3, { marginBottom: 4 }]}>Edit Job Metadata</Text>
+                  <View style={[S.rowGap, { gap: 10 }]}>
+                    <View style={{ flex: 2 }}>
+                      <Text style={[S.label, { marginBottom: 4 }]}>Job Title</Text>
+                      <TextInput value={title} onChangeText={setTitle} style={S.input} />
+                    </View>
+                    <View style={{ flex: 1.5 }}>
+                      <Text style={[S.label, { marginBottom: 4 }]}>Institute</Text>
+                      <TextInput value={institute} onChangeText={setInstitute} style={S.input} />
+                    </View>
+                    <View style={{ flex: 1 }}>
+                      <Text style={[S.label, { marginBottom: 4 }]}>Launch Year</Text>
+                      <TextInput value={year} onChangeText={setYear} keyboardType="number-pad" style={S.input} />
+                    </View>
+                  </View>
+                  <View style={[S.row, { gap: 8, marginTop: 8, justifyContent: "flex-end" }]}>
+                    <Pressable onPress={() => setEditing(false)} style={[S.buttonGhost, { paddingVertical: 6, paddingHorizontal: 12 }]} disabled={saving}>
+                      <Text style={S.buttonGhostText}>Cancel</Text>
+                    </Pressable>
+                    <Pressable onPress={saveMetadata} style={[S.button, { paddingVertical: 6, paddingHorizontal: 12 }]} disabled={saving}>
+                      {saving && <ActivityIndicator color="#fff" size="small" style={{ marginRight: 6 }} />}
+                      <Text style={S.buttonText}>Save Changes</Text>
+                    </Pressable>
+                  </View>
+                </View>
+              )}
+            </View>
+          );
+        })()}
 
         <View style={styles.tabs}>
           {(["preview", "prompts", "review", "low_confidence", "export"] as Tab[]).map((t) => (
@@ -408,6 +473,8 @@ function PromptsTab({ jobId, job, batches, onAfter, columns, useOcr }: any) {
     if (batches.length === 0) return;
     if (active >= batches.length) setActive(0);
     setLoading(true);
+    setPasteback("");
+    setParseRes(null);
     api.getPrompt(jobId, active).then((r) => setText(r.prompt_text)).finally(() => setLoading(false));
   }, [active, batches.length, jobId]);
 

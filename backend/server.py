@@ -321,7 +321,34 @@ async def get_job(job_id: str):
     return {"job": job, "questions": qs, "batches": batches}
 
 
-@api.delete("/jobs/{job_id}")
+@api.patch("/jobs/{job_id}/metadata")
+async def update_job_metadata(job_id: str, updates: Dict[str, Any]):
+    job = await _get_job(job_id)
+    metadata = job.get("metadata") or {}
+    
+    # Merge nested exam_frame if present
+    if "exam_frame" in updates and isinstance(updates["exam_frame"], dict):
+        metadata["exam_frame"] = {
+            **(metadata.get("exam_frame") or {}),
+            **updates["exam_frame"]
+        }
+        updates.pop("exam_frame")
+        
+    metadata.update(updates)
+    
+    # Update job document
+    await db.jt_jobs.update_one(
+        {"id": job_id},
+        {"$set": {
+            "metadata": metadata,
+            "title": metadata.get("title", job.get("title")),
+            "updated_at": now_iso()
+        }}
+    )
+    
+    updated_job = await db.jt_jobs.find_one({"id": job_id}, {"_id": 0})
+    return {"ok": True, "job": updated_job}
+
 async def delete_job(job_id: str):
     await _get_job(job_id)
     await db.jt_questions.delete_many({"job_id": job_id})
@@ -587,7 +614,7 @@ async def parse_output_endpoint(job_id: str, body: ParseOutputRequest):
             "inconsistency_reason": q.get("inconsistency_reason", ""),
             "edited": False,
             "parsed_from_gemini": True,
-            "created_at": existing["created_at"] if existing else now_iso(),
+            "created_at": existing.get("created_at") if (existing and "created_at" in existing) else now_iso(),
             "updated_at": now_iso(),
         }
         await db.jt_questions.update_one(

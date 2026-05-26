@@ -47,6 +47,8 @@ export const api = {
   getPageMap: (id: string, cols: number = 1) => jsonFetch<Record<string, number>>(`/api/jobs/${id}/page-map?columns=${cols}`),
   reverifyPrompt: (id: string, threshold: number) =>
     jsonFetch<any>(`/api/jobs/${id}/reverify-prompt?threshold=${threshold}`, { method: "POST" }),
+  updateJobMetadata: (id: string, updates: any) =>
+    jsonFetch<any>(`/api/jobs/${id}/metadata`, { method: "PATCH", body: JSON.stringify(updates) }),
 };
 
 export async function createJob(form: FormData) {
