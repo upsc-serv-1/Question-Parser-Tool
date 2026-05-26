@@ -9,3 +9,13 @@ INFO:     127.0.0.1:56585 - "GET /api/jobs HTTP/1.1" 200 OK
 INFO:     127.0.0.1:56592 - "GET /api/jobs HTTP/1.1" 200 OK
 INFO:     127.0.0.1:56592 - "GET /api/jobs/8edf655f-8845-4e6f-be66-c8826a2c6059 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:56592 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56733 - "GET /api/jobs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56733 - "OPTIONS /api/jobs/8edf655f-8845-4e6f-be66-c8826a2c6059 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56733 - "GET /api/jobs/8edf655f-8845-4e6f-be66-c8826a2c6059 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56733 - "GET /api/taxonomy?category=upsc_cms HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56750 - "GET /api/jobs/8edf655f-8845-4e6f-be66-c8826a2c6059 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56750 - "GET /api/taxonomy?category=upsc_cms HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56768 - "GET /api/jobs/8edf655f-8845-4e6f-be66-c8826a2c6059 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56768 - "GET /api/taxonomy?category=upsc_cms HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56768 - "GET /api/taxonomy?category=upsc_cms HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56772 - "GET /api/jobs/8edf655f-8845-4e6f-be66-c8826a2c6059 HTTP/1.1" 200 OK

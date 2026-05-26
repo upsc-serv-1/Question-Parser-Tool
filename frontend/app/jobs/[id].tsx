@@ -1199,6 +1199,12 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
   const [title, setTitle] = useState(job.title || "");
   const [institute, setInstitute] = useState(job.metadata?.institute || "");
   const [year, setYear] = useState(String(job.metadata?.launch_year || ""));
+  const [series, setSeries] = useState(job.metadata?.series || "");
+  const [level, setLevel] = useState(job.metadata?.level || "");
+  const [paperType, setPaperType] = useState(job.metadata?.paperType || "");
+  const [category, setCategory] = useState(job.metadata?.exam_frame?.exam_category || "cse");
+  const [stage, setStage] = useState(job.metadata?.exam_frame?.stage || "prelims");
+  const [paper, setPaper] = useState(job.metadata?.exam_frame?.paper || "pre_gs1");
   const [saving, setSaving] = useState(false);
 
   // Sync state with job changes
@@ -1206,6 +1212,12 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
     setTitle(job.title || "");
     setInstitute(job.metadata?.institute || "");
     setYear(String(job.metadata?.launch_year || ""));
+    setSeries(job.metadata?.series || "");
+    setLevel(job.metadata?.level || "");
+    setPaperType(job.metadata?.paperType || "");
+    setCategory(job.metadata?.exam_frame?.exam_category || "cse");
+    setStage(job.metadata?.exam_frame?.stage || "prelims");
+    setPaper(job.metadata?.exam_frame?.paper || "pre_gs1");
   }, [job]);
 
   const saveMetadata = async () => {
@@ -1215,6 +1227,14 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
         title: title,
         institute: institute,
         launch_year: parseInt(year, 10) || null,
+        series: series,
+        level: level,
+        paperType: paperType,
+        exam_frame: {
+          exam_category: category,
+          stage: stage,
+          paper: paper,
+        }
       });
       setEditing(false);
       onSave();
@@ -1230,15 +1250,16 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
       {!editing ? (
         <View style={[S.row, { gap: 8 }]}>
           <Text style={S.pSm}>
-            ID: {job.metadata?.id} · {job.metadata?.institute || "—"} ({job.metadata?.launch_year || "—"}) · {parsedQsCount} parsed Qs / {job.total_questions} total
+            ID: {job.metadata?.id} · {job.metadata?.institute || "—"} ({job.metadata?.launch_year || "—"}) · Category: {job.metadata?.exam_frame?.exam_category || "—"} · {parsedQsCount} parsed Qs / {job.total_questions} total
           </Text>
           <Pressable onPress={() => setEditing(true)} style={{ paddingHorizontal: 6, paddingVertical: 2 }}>
             <Text style={{ color: T.accent, fontSize: 12, fontWeight: "bold" }}>⚙ Edit Metadata</Text>
           </Pressable>
         </View>
       ) : (
-        <View style={[S.cardAlt, { gap: 10, marginTop: 8 }]}>
-          <Text style={[S.h3, { marginBottom: 4 }]}>Edit Job Metadata</Text>
+        <View style={[S.cardAlt, { gap: 12, marginTop: 8 }]}>
+          <Text style={[S.h3, { marginBottom: 4 }]}>Edit All Job Metadata</Text>
+          
           <View style={[S.rowGap, { gap: 10 }]}>
             <View style={{ flex: 2 }}>
               <Text style={[S.label, { marginBottom: 4 }]}>Job Title</Text>
@@ -1253,7 +1274,38 @@ function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
               <TextInput value={year} onChangeText={setYear} keyboardType="number-pad" style={S.input} />
             </View>
           </View>
-          <View style={[S.row, { gap: 8, marginTop: 8, justifyContent: "flex-end" }]}>
+
+          <View style={[S.rowGap, { gap: 10, marginTop: 4 }]}>
+            <View style={{ flex: 1 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Series</Text>
+              <TextInput value={series} onChangeText={setSeries} style={S.input} placeholder="e.g. Test Series" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Level</Text>
+              <TextInput value={level} onChangeText={setLevel} style={S.input} placeholder="e.g. Full Test / Subjectwise" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Paper Type</Text>
+              <TextInput value={paperType} onChangeText={setPaperType} style={S.input} placeholder="e.g. Full Length / Sectional" />
+            </View>
+          </View>
+
+          <View style={[S.rowGap, { gap: 10, marginTop: 4 }]}>
+            <View style={{ flex: 1 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Exam Category</Text>
+              <TextInput value={category} onChangeText={setCategory} style={S.input} placeholder="cse / upsc_cms" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Stage</Text>
+              <TextInput value={stage} onChangeText={setStage} style={S.input} placeholder="prelims / mains" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={[S.label, { marginBottom: 4 }]}>Paper Code</Text>
+              <TextInput value={paper} onChangeText={setPaper} style={S.input} placeholder="pre_gs1 / paper_1" />
+            </View>
+          </View>
+
+          <View style={[S.row, { gap: 8, marginTop: 12, justifyContent: "flex-end" }]}>
             <Pressable onPress={() => setEditing(false)} style={[S.buttonGhost, { paddingVertical: 6, paddingHorizontal: 12 }]} disabled={saving}>
               <Text style={S.buttonGhostText}>Cancel</Text>
             </Pressable>
