@@ -96,10 +96,6 @@ def build_schema2_json(job: Dict, questions: List[Dict]) -> Dict[str, Any]:
         "paperType": md.get("paperType", ""),
         "defaultMinutes": _safe_int(md.get("defaultMinutes"), 0),
         "sourceMode": md.get("sourceMode", "docx-inline"),
-        "schema_version": md.get("schema_version", "2.0"),
-        "institute_id": md.get("institute_id"),
-        "institute_name": md.get("institute_name"),
-        "exam_frame": exam_frame,
         "questions": out_questions,
     }
     return final
