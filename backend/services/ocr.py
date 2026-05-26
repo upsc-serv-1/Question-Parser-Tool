@@ -81,7 +81,9 @@ def ocr_page_via_tesseract(page: fitz.Page, dpi: int = 300, lang: str = "eng") -
     if not is_tesseract_available():
         raise RuntimeError(
             "Tesseract OCR engine not detected on the system. "
-            "Please install Tesseract-OCR for Windows/Linux and ensure 'tesseract' is in PATH."
+            "On Render: make sure your service uses Docker (not Native) so the Dockerfile installs tesseract-ocr. "
+            "On macOS: run 'brew install tesseract'. "
+            "On Linux: run 'apt-get install tesseract-ocr'."
         )
     from PIL import Image
     import pytesseract

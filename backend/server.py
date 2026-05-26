@@ -47,6 +47,19 @@ api = APIRouter(prefix="/api")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("jsontool")
 
+
+@app.get("/api/health")
+async def health_check():
+    """Health check endpoint for Render."""
+    from services.ocr import is_mac_ocr_available, is_tesseract_available
+    return {
+        "status": "ok",
+        "ocr": {
+            "mac_vision": is_mac_ocr_available(),
+            "tesseract": is_tesseract_available(),
+        }
+    }
+
 # ─────────── INSTITUTE / PROGRAM PATTERNS ────────────────────────────────
 
 INSTITUTE_PATTERNS = [
