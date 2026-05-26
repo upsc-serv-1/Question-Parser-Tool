@@ -1189,6 +1189,8 @@ function LowConfidenceTab({ jobId, questions, onAfter }: any) {
             </View>
           )}
         </View>
+      </View>
+    </View>
   );
 }
 // ─────────────── METADATA EDITOR SUBCOMPONENT ──────────────────
