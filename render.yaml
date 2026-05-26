@@ -1,4 +1,5 @@
 services:
+  # 1. Backend Service (FastAPI running with Docker for Tesseract OCR support)
   - type: web
     name: question-parser-backend
     runtime: docker
@@ -12,3 +13,17 @@ services:
       - key: GEMINI_API_KEY
         sync: false
     healthCheckPath: /api/health
+
+  # 2. Frontend Service (Static site build from Expo for Web)
+  - type: web
+    name: question-parser-frontend
+    runtime: static
+    buildCommand: yarn install && yarn build
+    publishPath: ./frontend/dist
+    headers:
+      - key: Cache-Control
+        value: no-cache
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
