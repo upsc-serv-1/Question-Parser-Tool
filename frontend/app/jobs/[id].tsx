@@ -1189,8 +1189,8 @@ function LowConfidenceTab({ jobId, questions, onAfter }: any) {
             </View>
           )}
         </View>
-      </View>
-    </View>
+  );
+}
 // ─────────────── METADATA EDITOR SUBCOMPONENT ──────────────────
 function JobMetadataEditor({ job, jobId, onSave, parsedQsCount }: any) {
   const [editing, setEditing] = useState(false);
